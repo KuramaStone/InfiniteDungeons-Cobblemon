@@ -3,10 +3,14 @@
 
 # Keep these specific files/folders
 !.gitignore
-!README.md
 !LICENSE.txt
 
+# Allow configs
 !src/
 !src/main/
 !src/main/resources/
 !src/main/resources/*.yml
+
+# Allow docs
+!README.md
+!docs/*.md

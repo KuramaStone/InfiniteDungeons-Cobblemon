@@ -1,6 +1,6 @@
 # Dungeon Minigame Mod
 
-This mod adds a configurable dungeon-based minigame to Minecraft. Players form teams, enter temporary dungeon instances, fight through challenges, and face a customizable boss Pokémon. The system is built around flexible configuration and strong safety controls for multiplayer servers.
+This mod adds a highly configurable experience that allows players to enter procedural dungeons from Roguelike Dungeons. These dungeons have customizable loot, boss pokemon, and teams. Players can enter dungeons in groups or solo. Dungeon difficulty is extremely flexible and offers formula support with variables.
 
 ---
 
@@ -87,7 +87,7 @@ These settings control boss spawns, difficulty, team requirements, and optional 
 | `max-players-per-team` | 5       | The maximum team size allowed in this dungeon. Teams larger than this are prompted to select members.   |
 | `type-list`            | —       | The list of possible DungeonTypes that may spawn. Each type can have an optional weight for randomness. |
 | `variables`            | —       | Optional key/value pairs used in dungeon formulas or calculations.                                      |
-| `commands.on-start`    | —       | Commands to run when the dungeon starts. Use `{player}` to target individual players.                   |
+| `commands.on-start`    | —       | Commands to run when the dungeon starts. Commands containing `{player}` are run for each player.        |
 
 #### Example
 
@@ -110,73 +110,6 @@ Dungeons:
         - "tellraw {player} {\"text\":\"Welcome to the Dungeon!\"}"
 ```
 
-### Dungeon Types (dungeontypes.yml)
+### [Dungeon Types (dungeontypes.yml)](docs/dungeontypes.md)
 
-Each `DungeonType` defines a group of possible bosses that can spawn in a dungeon. You can use static values or formulas to dynamically scale difficulty.
-
-| Key                  | Default | Description                                                                                                                   |
-|----------------------|---------|-------------------------------------------------------------------------------------------------------------------------------|
-| `base-properties`    | —       | Properties applied to **every entry** in this type. For example, `lvl=25` will apply to all spawned bosses unless overridden. |
-| `spawn-list`         | —       | A list of spawnable bosses/Pokémon with optional weights and additional spawn rules.                                          |
-
-#### Spawn List Properties
-
-| Property           | Type        | Description                                                      |
-|--------------------|--------------|------------------------------------------------------------------|
-| `properties`       | string      | The Pokémon/build properties, similar to `/pokegive`.            |
-| `weight`           | float       | Higher weight = more likely to spawn.                            |
-| `preferred-rooms`  | list        | Optional list of dungeon rooms where this boss prefers to spawn. |
-
----
-
-#### Example: Basic Type
-
-```yaml
-Types:
-  example:
-    base-properties: "lvl=25"
-    spawn-list:
-      - properties: "pikachu"
-        weight: 100.0
-```
-
-### Loot Pools (loot.yml)
-
-Loot Pools define sets of items that can drop from dungeons. Each pool has a weight, a number of pulls, and a list of items with their own weights and item counts.
-
-| Key               | Default | Description                                                                  |
-|-------------------|---------|------------------------------------------------------------------------------|
-| `pool weight`     | —       | Determines how likely this pool is selected relative to other pools.         |
-| `pulls`           | —       | Range `[min, max]` indicating how many items to randomly pull from the pool. |
-| `pool`            | —       | List of individual loot entries (shown below).                               |
-
----
-
-#### Loot Entry Properties
-
-| Property       | Type        | Description                                                |
-|----------------|-------------|------------------------------------------------------------|
-| `item`         | string      | The item to give (Minecraft item ID). Uses `/give` format  |
-| `amount`       | list        | Range `[min, max]` for the quantity of this item.          |
-| `weight`       | float       | Relative chance of this item being selected during a pull. |
-
----
-
-#### Example: Common Loot Pool
-
-```yaml
-Loot Pools:
-  common:
-    pool weight: 9
-    pulls: [8, 16]
-    pool:
-      - item: "nether_wart"
-        amount: [1, 6]
-        weight: 6
-      - item: "gold_ingot"
-        amount: [3, 8]
-        weight: 3
-      - item: "iron_sword[custom_name='[\"\",{\"text\":\"Brook's Favorite Sword\",\"italic\":false}]']"
-        amount: [1, 1]
-        weight: 1
-```
+### [Chest Loot Pools (loot.yml)](docs/loot.md)
