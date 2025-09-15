@@ -6,6 +6,11 @@ config-version: 1
 Dungeons:
   # This is the id of this dungeon
   example:
+    # The number of lives given in this dungeon
+    max-lives-per-player: 3
+    # The max team size for the dungeon. If the user team is larger, they are asked to select which members to bring.
+    max-players-per-team: 5
+
     # These are the possible DungeonTypes that could be selected. Completing any of them still counts as a completion for this specific dungeon.
     type-list:
       - type: "grassbosses"

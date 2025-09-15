@@ -1,3 +1,5 @@
+config-version: 1
+
 # Loot pools
 # Loot Pools:
 #  # The ID of this lootpool
@@ -16,16 +18,13 @@ Loot Pools:
     pool:
       - item: "nether_wart"
         amount: [1, 6]
-        weight: 1
-      - item: "long_grass"
+        weight: 6
+      - item: "gold_ingot"
         amount: [3, 8]
-        weight: 4
-      - item: "iron_sword"
+        weight: 3
+      - item: "iron_sword[custom_name='[\"\",{\"text\":\"test\",\"italic\":false}]']"
         amount: [1, 1]
-        weight: 10
-      - item: "iron_nugget"
-        amount: [12, 48]
-        weight: 20
+        weight: 1
   rare:
     pool weight: 1
     pulls: [8, 16]

@@ -1,5 +1,10 @@
 config-version: 1
 
-max-lives-per-dungeon: 3
-max-players-per-team: 5
-allow-spectator-mode: true
+# The max team size for teams. If a team is larger than a dungeon allows, then the player will select who to bring.
+max-players-per-team: 10
+
+# If set to true, players will spectate their dungeon after dying. Otherw
+spectator-mode:
+  enabled: true
+  # If true, then the spectator will be locked to teammembers only.
+  only-on-team: true
