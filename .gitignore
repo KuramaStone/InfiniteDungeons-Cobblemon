@@ -13,4 +13,5 @@
 
 # Allow docs
 !README.md
+!docs/
 !docs/*.md
