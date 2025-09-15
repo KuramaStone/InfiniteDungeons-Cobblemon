@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# Keep these specific files/folders
+!.gitignore
+!README.md
+!LICENSE.txt
+
+!src/
+!src/main/
+!src/main/resources/
+!src/main/resources/*.yml

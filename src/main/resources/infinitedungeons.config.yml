@@ -1,0 +1,5 @@
+config-version: 1
+
+max-lives-per-dungeon: 3
+max-players-per-team: 5
+allow-spectator-mode: true

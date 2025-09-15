@@ -1,0 +1,64 @@
+config-version: 1
+
+# FightOrFlight was (will be) updated in v1.1.2 to have an "aggression-bias" property.
+#  - This can be used to make pokemon more aggressive - typically -5 would guarantee aggression and +5 guarantees fleeing.
+
+Types:
+  # This is an example entry that explains each entry.
+  example:
+    # These properties are applied at the end of every specific entry. For example, the first entry here would become "bulbasaur lvl=25" when spawning the boss.
+    base-properties: "lvl=25"
+    # This is the list of possible bosses that can spawn here. Use weights to control how likely they are to spawn
+    spawn-list:
+      - properties: "pikachu" # This is used to build the pokemon and works like /pokegive
+        weight: 100.0 # More weight = More likely to be picked.
+
+  # This example uses formulas to make it grow increasingly difficult
+  advanced:
+    # You can write a formula such as ${1+1} to get 2. Text in this format will be calculated before building the pokemon
+    # "lvl=${1+1}" turns into "lvl=2"
+    # There are some variables built-in:
+    # - {config_id}: The config_id of the current dungeon.
+    # - {avg_times_completed}: The number of times this dungeon has been beaten on average for this DungeonTeam
+    # - {max_times_completed}: The number of times this dungeon has been beaten by the highest value team member
+    # - {team_size}: The size of the player team in the dungeon
+    # Some tools that can help you are:
+    # - abs(x): Absolute value
+    # - floor(x): Drops the value to the lower whole number (if not already a whole number)
+    # - round(x): Rounds the number to the closest whole number
+    # - ceil(x): Raises the value to the higher whole number (if not already a whole number)
+    # - min(x, y): Returns the lower value between the two
+    # - max(x, y): Returns the higher value between the two
+
+    # This example showcases a level that raises by 5 for each avg_times_completed AND causes higher aggression based on the max_times_completed divided by 5. baseLevel is a variable provided by the parent Dungeon config located in /dungeons.yml
+    base-properties: "lvl=${min(100, {baseLevel}+{avg_times_completed}*5)} aspect=dungeon-pokemon aggression-bias=-${{max_times_completed}/5.0}"
+    spawn-list:
+      - properties: "mewtwo"
+        weight: 99.9
+        # You can select certain rooms from RogueLike Dungeons that it will attempt to spawn in
+        preferred-rooms: ["ender", ""]
+      - properties: "mewtwo shiny=true"
+        weight: 0.1
+
+
+  grassbosses:
+    base-properties: "lvl=25 aspect=dungeon-pokemon aggression-bias=-10"
+    spawn-list:
+      - properties: "bulbasaur"
+        weight: 99.9
+      - properties: "bulbasaur shiny=true"
+        weight: 0.1
+  waterbosses:
+    base-properties: "lvl=25 aspect=dungeon-pokemon aggression-bias=-10"
+    spawn-list:
+      - properties: "squirtle"
+        weight: 99.9
+      - properties: "squirtle shiny=true"
+        weight: 0.1
+  firebosses:
+    base-properties: "lvl=25 aspect=dungeon-pokemon aggression-bias=-10"
+    spawn-list:
+      - properties: "charmander"
+        weight: 99.9
+      - properties: "charmander shiny=true"
+        weight: 0.1

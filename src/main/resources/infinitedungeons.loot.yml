@@ -1,0 +1,44 @@
+# Loot pools
+# Loot Pools:
+#  # The ID of this lootpool
+#  example:
+#    pool weight: 9 # This is how likely this pool will be selected to fill a chest
+#    pulls: [8, 16] # This is how many items from the pool will be gathered
+#    # The pool is all the possible loot that can spawn in the chests.
+#    pool:
+#      - item: "paper[minecraft:custom_model_data=1]" # This is formatted like the /give command.
+#        amount: [1, 6] # The max stack size
+#        weight: 2 # How often this item is to be selected compared to other items in the pool
+Loot Pools:
+  common:
+    pool weight: 9
+    pulls: [8, 16]
+    pool:
+      - item: "nether_wart"
+        amount: [1, 6]
+        weight: 1
+      - item: "long_grass"
+        amount: [3, 8]
+        weight: 4
+      - item: "iron_sword"
+        amount: [1, 1]
+        weight: 10
+      - item: "iron_nugget"
+        amount: [12, 48]
+        weight: 20
+  rare:
+    pool weight: 1
+    pulls: [8, 16]
+    pool:
+      - item: "paper[minecraft:custom_model_data=1]"
+        amount: [1, 6]
+        weight: 2
+      - item: "diamond"
+        amount: [1, 6]
+        weight: 1
+      - item: "emerald"
+        amount: [3, 8]
+        weight: 4
+      - item: "iron_ingot"
+        amount: [12, 24]
+        weight: 10

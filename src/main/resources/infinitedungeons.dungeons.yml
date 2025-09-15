@@ -1,0 +1,23 @@
+config-version: 1
+
+# Dungeons
+# These are the controller of the Minigame. It defines what bosses could spawn, the difficulty of the dungeon, and whatever other data would be needed.
+
+Dungeons:
+  # This is the id of this dungeon
+  example:
+    # These are the possible DungeonTypes that could be selected. Completing any of them still counts as a completion for this specific dungeon.
+    type-list:
+      - type: "grassbosses"
+        weight: 1
+      - type: "waterbosses"
+        weight: 1
+      - type: "firebosses"
+        weight: 1
+    # Variables here will be used when calculating the formulas. They are optional but may offer additional customization.
+    variables:
+      baseLevel: 25
+    # The commands to run on startup. Commands containing a {player} will be run for every player.
+    commands:
+      on-start:
+        - "tellraw {player} {\"text\":\"Welcome to the Dungeon!\"}"
