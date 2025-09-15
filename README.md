@@ -45,24 +45,28 @@ This mod adds a highly configurable experience that allows players to enter proc
 ## Commands
 
 ### Dungeon Commands
-| Command                               | Permission                            | Description                                                                                                             |
-|---------------------------------------|---------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| **/infdungeon startsolo \<dungeon\>** | `infinitedungeons.commands.startsolo` | Starts a solo dungeon using the specified dungeon config.                                                               |
-| **/infdungeon startteam \<dungeon\>** | `infinitedungeons.commands.startteam` | Starts a team dungeon in the specified dungeon config. All team members receive a chat + GUI prompt to join or decline. |
+
+| Command | Permission | Description |
+|---------|------------|-------------|
+| `/infdungeon startsolo <dungeon>` | `infinitedungeons.commands.startsolo` | Starts a solo dungeon using the specified dungeon config. |
+| `/infdungeon startteam <dungeon>` | `infinitedungeons.commands.startteam` | Starts a team dungeon in the specified dungeon config. All team members receive a chat + GUI prompt to join or decline. |
 
 ### Admin Commands
-| Command                                                    | Permission                                  | Description                                                                                            |
-|------------------------------------------------------------|---------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| **/infdungeon admin startsolo \<dungeon\> \<player\>**     | `infinitedungeons.commands.admin.startteam` | Instantly starts a solo dungeon for the given player (no prompt).                                      |
-| **/infdungeon admin startteam \<dungeon\> \<2+ players\>** | `infinitedungeons.commands.admin.startteam` | Instantly starts a team dungeon for the given players (no prompt). Does **not** affect existing teams. |
+
+| Command | Permission | Description |
+|---------|------------|-------------|
+| `/infdungeon admin startsolo <dungeon> <player>` | `infinitedungeons.commands.admin.startteam` | Instantly starts a solo dungeon for the given player (no prompt). |
+| `/infdungeon admin startteam <dungeon> <2+ players>` | `infinitedungeons.commands.admin.startteam` | Instantly starts a team dungeon for the given players (no prompt). Does **not** affect existing teams. |
 
 ### Team Commands
-| Command                                               | Permission                               | Description                                                                                                            |
-|-------------------------------------------------------|------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| **/infdungeon team create \<teamName\> [players...]** | `infinitedungeons.commands.teams.create` | Creates a new team with you as the owner. You may optionally invite players during creation (if they have permission). |
-| **/infdungeon team invite [player]**                  | `infinitedungeons.commands.teams.invite` | Invites a player to your team.                                                                                         |
-| **/infdungeon team delete**                           | `infinitedungeons.commands.teams.delete` | Deletes your team if you are the owner.                                                                                |
-| **/infdungeon team leave**                            | `infinitedungeons.commands.teams.leave`  | Leave your team if you are not the owner.                                                                              |
+
+| Command | Permission | Description |
+|---------|------------|-------------|
+| `/infdungeon team create <teamName> [players...]` | `infinitedungeons.commands.teams.create` | Creates a new team with you as the owner. Optionally invite players during creation (if they have permission). |
+| `/infdungeon team invite [player]` | `infinitedungeons.commands.teams.invite` | Invite a player to your team. |
+| `/infdungeon team delete` | `infinitedungeons.commands.teams.delete` | Deletes your team if you are the owner. |
+| `/infdungeon team leave` | `infinitedungeons.commands.teams.leave` | Leave your team if you are not the owner. |
+
 
 ---
 
