@@ -45,15 +45,15 @@ This mod adds a configurable dungeon-based minigame to Minecraft. Players form t
 ## Commands
 
 ### Dungeon Commands
-| Command | Permission | Description |
-|---------|------------|-------------|
-| **/infdungeon startsolo \<dungeon\>** | `infinitedungeons.commands.startsolo` | Starts a solo dungeon using the specified dungeon config. |
+| Command                               | Permission                            | Description                                                                                                             |
+|---------------------------------------|---------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| **/infdungeon startsolo \<dungeon\>** | `infinitedungeons.commands.startsolo` | Starts a solo dungeon using the specified dungeon config.                                                               |
 | **/infdungeon startteam \<dungeon\>** | `infinitedungeons.commands.startteam` | Starts a team dungeon in the specified dungeon config. All team members receive a chat + GUI prompt to join or decline. |
 
 ### Admin Commands
-| Command | Permission | Description |
-|---------|------------|-------------|
-| **/infdungeon admin startsolo \<dungeon\> \<player\>** | `infinitedungeons.commands.admin.startteam` | Instantly starts a solo dungeon for the given player (no prompt). |
+| Command                                                    | Permission                                  | Description                                                                                            |
+|------------------------------------------------------------|---------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| **/infdungeon admin startsolo \<dungeon\> \<player\>**     | `infinitedungeons.commands.admin.startteam` | Instantly starts a solo dungeon for the given player (no prompt).                                      |
 | **/infdungeon admin startteam \<dungeon\> \<2+ players\>** | `infinitedungeons.commands.admin.startteam` | Instantly starts a team dungeon for the given players (no prompt). Does **not** affect existing teams. |
 
 ### Team Commands
@@ -81,13 +81,13 @@ The dungeon system is fully configurable via the config files.
 
 These settings control boss spawns, difficulty, team requirements, and optional startup commands.
 
-| Key                                  | Default | Description                                                                                              |
-|--------------------------------------|---------|----------------------------------------------------------------------------------------------------------|
-| `max-lives-per-player`               | 3       | The number of lives each player receives in this dungeon.                                                |
-| `max-players-per-team`               | 5       | The maximum team size allowed in this dungeon. Teams larger than this are prompted to select members.    |
-| `type-list`                          | —       | The list of possible DungeonTypes that may spawn. Each type can have an optional weight for randomness.  |
-| `variables`                          | —       | Optional key/value pairs used in dungeon formulas or calculations.                                        |
-| `commands.on-start`                  | —       | Commands to run when the dungeon starts. Use `{player}` to target individual players.                    |
+| Key                    | Default | Description                                                                                             |
+|------------------------|---------|---------------------------------------------------------------------------------------------------------|
+| `max-lives-per-player` | 3       | The number of lives each player receives in this dungeon.                                               |
+| `max-players-per-team` | 5       | The maximum team size allowed in this dungeon. Teams larger than this are prompted to select members.   |
+| `type-list`            | —       | The list of possible DungeonTypes that may spawn. Each type can have an optional weight for randomness. |
+| `variables`            | —       | Optional key/value pairs used in dungeon formulas or calculations.                                      |
+| `commands.on-start`    | —       | Commands to run when the dungeon starts. Use `{player}` to target individual players.                   |
 
 #### Example
 
