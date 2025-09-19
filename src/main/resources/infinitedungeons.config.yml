@@ -8,3 +8,27 @@ spectator-mode:
   enabled: true
   # If true, then the spectator will be locked to teammembers only.
   only-on-team: true
+
+
+invitation-gui:
+  structure:
+    - "# # # # # # # # #"
+    - "# # Y # # # N # #"
+    - "# # # # I # # # #"
+  ingredients:
+    '#':
+      type: minecraft:black_stained_glass_pane
+      hideTooltip: true
+    'Y':
+      type: minecraft:lime_stained_glass_pane
+      display-name: "<green>Confirm"
+    'N':
+      type: minecraft:lime_stained_glass_pane
+      display-name: "<red>Deny"
+    'I':
+      type: minecraft:paper
+      display-name: "<yellow>Information"
+      lore:
+        - " "
+        - "<gold>Dungeon Type: {type}"
+        - "<white>You've been invited by {player} to a Dungeon!"

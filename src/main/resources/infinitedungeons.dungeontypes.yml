@@ -50,7 +50,7 @@ Types:
   # And these are ones I add to fill any gaps needed:
   # - randomInt(min, max): Return a random number from an inclusive-inclusive range. So randomInt(0, 5) can get 0, 1, 2, 3, 4, and 5
   advanced:
-    random-pokemon-per-room: 4
+    pokemon-per-room: 4
     boss:
       # This example showcases a level that raises by 5 for each avg_times_completed AND causes higher aggression based on the max_times_completed divided by 5. baseLevel is a variable provided by the parent Dungeon config located in /dungeons.yml
       base-properties: "lvl=${min(100, {baseLevel}+{avg_times_completed}*5)} aspect=dungeon-pokemon aggression-bias=-${{max_times_completed}/5.0}"
@@ -76,7 +76,7 @@ Types:
   # Functional examples
   # Cave is a functional example of a cave with different spawns in rooms, different bosses
   cave:
-    random-pokemon-per-room: 4
+    pokemon-per-room: 4
     boss:
       base-properties: "lvl=25 aspect=dungeon-boss aggression-bias=-10 uncatchable"
       spawn-list:
@@ -124,7 +124,7 @@ Types:
           preferred-rooms: ["-*", "IMPERIAL_STAIRWAY"]
 
   ruins:
-    random-pokemon-per-room: 4
+    pokemon-per-room: 4
     boss:
       base-properties: "lvl=30 aspect=dungeon-boss aggression-bias=-8"
       spawn-list:
@@ -174,7 +174,7 @@ Types:
           preferred-rooms: ["SCULK", "CRYPT"]
 
 lava_forge:
-  random-pokemon-per-room: 4
+  pokemon-per-room: 4
   boss:
     base-properties: "lvl=35 aspect=forge-boss aggression-bias=-12"
     spawn-list:
