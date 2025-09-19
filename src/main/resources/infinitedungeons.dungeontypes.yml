@@ -7,58 +7,218 @@ Types:
   # This is an example entry that explains each entry.
   example:
     # These properties are applied at the end of every specific entry. For example, the first entry here would become "bulbasaur lvl=25" when spawning the boss.
-    base-properties: "lvl=25"
-    # This is the list of possible bosses that can spawn here. Use weights to control how likely they are to spawn
-    spawn-list:
-      - properties: "pikachu" # This is used to build the pokemon and works like /pokegive
-        weight: 100.0 # More weight = More likely to be picked.
+    boss:
+      # This example showcases a level that raises by 5 for each avg_times_completed AND causes higher aggression based on the max_times_completed divided by 5. baseLevel is a variable provided by the parent Dungeon config located in /dungeons.yml
+      base-properties: "lvl=${min(100, {baseLevel}+{avg_times_completed}*5)} aspect=dungeon-pokemon aggression-bias=-${{max_times_completed}/5.0}"
+      # This is the list of possible bosses that can spawn here. Use weights to control how likely they are to spawn
+      spawn-list:
+        - properties: "mewtwo"
+          weight: 99.9
+          # You can select certain rooms from RogueLike Dungeons that it will attempt to spawn in
+          preferred-rooms: [ "ender" ]
+        - properties: "mewtwo shiny=true"
+          weight: 0.1
+          preferred-rooms: [ "ender" ] # A boss's preferred room is optional, it will find a new location if the room isnt found.
+    random:
+      base-properties: "lvl=25"
+      # This is the list of possible random pokemon that can spawn. Use weights to control how likely they are to spawn based on the valid spawn conditions
+      spawn-list:
+        - properties: "clefairy"
+          weight: 99.9
+          preferred-rooms: [ "cistern" ] # A random's preferred room is mandatory, it won't spawn outside of it. You may use ["*", "!cistern"] to allow it to spawn everywhere except the cistern.
+        - properties: "clefairy shiny=true"
+          weight: 0.1
+          preferred-rooms: [ "cistern" ]
+
 
   # This example uses formulas to make it grow increasingly difficult
+  # You can write a formula such as ${1+1} to get 2. Text in this format will be calculated before building the pokemon
+  # "lvl=${1+1}" turns into "lvl=2"
+  # There are some variables built-in:
+  # - {config_id}: The config_id of the current dungeon.
+  # - {avg_times_completed}: The number of times this dungeon has been beaten on average for this DungeonTeam
+  # - {max_times_completed}: The number of times this dungeon has been beaten by the highest value team member
+  # - {team_size}: The size of the player team in the dungeon
+  # These are provided by JavaScript. For a full list, look at the "Static Methods" section here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math#static_methods
+  # - abs(x): Returns the absolute value
+  # - floor(x): Returns after dropping value to the lower whole number (if not already a whole number)
+  # - round(x): Returns the closest whole number
+  # - ceil(x): Returns after raising the value to the higher whole number (if not already a whole number)
+  # - min(x, y): Returns the lower value between the two
+  # - max(x, y): Returns the higher value between the two
+  # - random(x, y): Returns a random decimal between 0.0 and 1.0
+  # And these are ones I add to fill any gaps needed:
+  # - randomInt(min, max): Return a random number from an inclusive-inclusive range. So randomInt(0, 5) can get 0, 1, 2, 3, 4, and 5
   advanced:
-    # You can write a formula such as ${1+1} to get 2. Text in this format will be calculated before building the pokemon
-    # "lvl=${1+1}" turns into "lvl=2"
-    # There are some variables built-in:
-    # - {config_id}: The config_id of the current dungeon.
-    # - {avg_times_completed}: The number of times this dungeon has been beaten on average for this DungeonTeam
-    # - {max_times_completed}: The number of times this dungeon has been beaten by the highest value team member
-    # - {team_size}: The size of the player team in the dungeon
-    # Some tools that can help you are:
-    # - abs(x): Absolute value
-    # - floor(x): Drops the value to the lower whole number (if not already a whole number)
-    # - round(x): Rounds the number to the closest whole number
-    # - ceil(x): Raises the value to the higher whole number (if not already a whole number)
-    # - min(x, y): Returns the lower value between the two
-    # - max(x, y): Returns the higher value between the two
-
-    # This example showcases a level that raises by 5 for each avg_times_completed AND causes higher aggression based on the max_times_completed divided by 5. baseLevel is a variable provided by the parent Dungeon config located in /dungeons.yml
-    base-properties: "lvl=${min(100, {baseLevel}+{avg_times_completed}*5)} aspect=dungeon-pokemon aggression-bias=-${{max_times_completed}/5.0}"
-    spawn-list:
-      - properties: "mewtwo"
-        weight: 99.9
-        # You can select certain rooms from RogueLike Dungeons that it will attempt to spawn in
-        preferred-rooms: ["ender", ""]
-      - properties: "mewtwo shiny=true"
-        weight: 0.1
+    random-pokemon-per-room: 4
+    boss:
+      # This example showcases a level that raises by 5 for each avg_times_completed AND causes higher aggression based on the max_times_completed divided by 5. baseLevel is a variable provided by the parent Dungeon config located in /dungeons.yml
+      base-properties: "lvl=${min(100, {baseLevel}+{avg_times_completed}*5)} aspect=dungeon-pokemon aggression-bias=-${{max_times_completed}/5.0}"
+      spawn-list:
+        - properties: "mewtwo"
+          weight: 99.9
+          # You can select certain rooms from RogueLike Dungeons that it will attempt to spawn in
+          preferred-rooms: [ "ender" ]
+        - properties: "mewtwo shiny=true"
+          weight: 0.1
+          preferred-rooms: [ "ender" ]
+    random:
+      base-properties: "lvl=${randomInt(10, 20)}"
+      spawn-list:
+        - properties: "clefairy"
+          weight: 99.9
+          preferred-rooms: [ "cistern" ] # You can select certain rooms from RogueLike Dungeons that it will attempt to spawn in
+        - properties: "clefairy shiny=true"
+          weight: 0.1
+          preferred-rooms: [ "cistern" ] # You can select certain rooms from RogueLike Dungeons that it will attempt to spawn in
 
 
-  grassbosses:
-    base-properties: "lvl=25 aspect=dungeon-pokemon aggression-bias=-10"
+  # Functional examples
+  # Cave is a functional example of a cave with different spawns in rooms, different bosses
+  cave:
+    random-pokemon-per-room: 4
+    boss:
+      base-properties: "lvl=25 aspect=dungeon-boss aggression-bias=-10 uncatchable"
+      spawn-list:
+        - properties: "clefable"
+          weight: 80.0
+        - properties: "steelix"
+          weight: 10.0
+        - properties: "gengar"
+          weight: 20.0
+    random:
+      base-properties: "lvl=${randomInt(10, 20)} aspect=dungeon-pokemon aggression-bias=-4"
+      spawn-list:
+        - properties: "zubat"
+          weight: 25.0
+          preferred-rooms: ["CORRIDOR", "ENTRANCE", "STAIRWAY"]
+        - properties: "geodude"
+          weight: 20.0
+          preferred-rooms: ["CROSS", "BEDROOM", "CRYPT", "RESERVOIR"]
+        - properties: "gastly"
+          weight: 15.0
+          preferred-rooms: ["CRYPT", "OSSUARY", "SCULK", "ABYSS"]
+        - properties: "golbat"
+          weight: 10.0
+          preferred-rooms: ["CORRIDOR", "STAIRWAY", "PIT", "BALCONY"]
+        - properties: "onix"
+          weight: 8.0
+          preferred-rooms: ["RESERVOIR", "CISTERN", "PIT"]
+        - properties: "mimikyu"
+          weight: 5.0
+          preferred-rooms: ["BEDROOM", "CRYPT", "OSSUARY", "LIBRARY"]
+        - properties: "sableye"
+          weight: 4.0
+          preferred-rooms: ["SMITH", "PANOPTICON", "BREWING", "CRYPT"]
+        - properties: "noibat"
+          weight: 6.0
+          preferred-rooms: ["CORRIDOR", "STAIRWAY", "BALCONY"]
+        - properties: "salandit"
+          weight: 5.0
+          preferred-rooms: ["KITCHEN", "BREWING", "BANQUET"]
+        - properties: "spiritomb"
+          weight: 1.0
+          preferred-rooms: ["SCULK", "OSSUARY", "CRYPT"]
+        - properties: "clefable"
+          weight: 0.2
+          preferred-rooms: ["-*", "IMPERIAL_STAIRWAY"]
+
+  ruins:
+    random-pokemon-per-room: 4
+    boss:
+      base-properties: "lvl=30 aspect=dungeon-boss aggression-bias=-8"
+      spawn-list:
+        - properties: "claydol"
+          weight: 70.0
+        - properties: "reuniclus"
+          weight: 20.0
+        - properties: "bronzong"
+          weight: 9.5
+        - properties: "claydol shiny=true"
+          weight: 0.5
+    random:
+      base-properties: "lvl=${randomInt(15, 25)} aspect=dungeon-pokemon aggression-bias=-3"
+      spawn-list:
+        - properties: "baltoy"
+          weight: 20.0
+          preferred-rooms: ["CORRIDOR", "ENTRANCE", "CROSS"]
+        - properties: "yamask"
+          weight: 15.0
+          preferred-rooms: ["CRYPT", "OSSUARY", "SCULK"]
+        - properties: "bronzor"
+          weight: 12.0
+          preferred-rooms: ["LIBRARY", "SMITH", "PANOPTICON"]
+        - properties: "litwick"
+          weight: 10.0
+          preferred-rooms: ["LIBRARY", "CRYPT", "MUSIC", "BREWING"]
+        - properties: "natu"
+          weight: 8.0
+          preferred-rooms: ["BALCONY", "STAIRWAY", "PIT"]
+        - properties: "solrock"
+          weight: 7.0
+          preferred-rooms: ["CISTERN", "RESERVOIR", "PIT"]
+        - properties: "lunatone"
+          weight: 7.0
+          preferred-rooms: ["CISTERN", "RESERVOIR", "ABYSS"]
+        - properties: "dusclops"
+          weight: 5.0
+          preferred-rooms: ["CRYPT", "OSSUARY", "ABYSS"]
+        - properties: "sigilyph"
+          weight: 3.0
+          preferred-rooms: ["IMPERIAL_STAIRWAY", "BALCONY"]
+        - properties: "unown"
+          weight: 2.0
+          preferred-rooms: ["LIBRARY", "PANOPTICON", "BANQUET"]
+        - properties: "spiritomb"
+          weight: 0.5
+          preferred-rooms: ["SCULK", "CRYPT"]
+
+lava_forge:
+  random-pokemon-per-room: 4
+  boss:
+    base-properties: "lvl=35 aspect=forge-boss aggression-bias=-12"
     spawn-list:
-      - properties: "bulbasaur"
-        weight: 99.9
-      - properties: "bulbasaur shiny=true"
-        weight: 0.1
-  waterbosses:
-    base-properties: "lvl=25 aspect=dungeon-pokemon aggression-bias=-10"
+      - properties: "magmar"
+        weight: 60.0
+      - properties: "camerupt"
+        weight: 30.0
+      - properties: "heatmor"
+        weight: 9.5
+      - properties: "magmar shiny=true"
+        weight: 0.5
+  random:
+    base-properties: "lvl=${randomInt(18, 28)} aspect=forge-pokemon aggression-bias=-5"
     spawn-list:
-      - properties: "squirtle"
-        weight: 99.9
-      - properties: "squirtle shiny=true"
-        weight: 0.1
-  firebosses:
-    base-properties: "lvl=25 aspect=dungeon-pokemon aggression-bias=-10"
-    spawn-list:
-      - properties: "charmander"
-        weight: 99.9
-      - properties: "charmander shiny=true"
-        weight: 0.1
+      - properties: "slugma"
+        weight: 20.0
+        preferred-rooms: ["RESERVOIR", "CISTERN", "BREWING"]
+      - properties: "numel"
+        weight: 15.0
+        preferred-rooms: ["PIT", "SMITH", "CORRIDOR"]
+      - properties: "koffing"
+        weight: 12.0
+        preferred-rooms: ["KITCHEN", "BREWING", "BANQUET"]
+      - properties: "houndour"
+        weight: 10.0
+        preferred-rooms: ["STAIRWAY", "CROSS", "BALCONY"]
+      - properties: "drilbur"
+        weight: 8.0
+        preferred-rooms: ["CORRIDOR", "STAIRWAY", "SMITH"]
+      - properties: "rolycoly"
+        weight: 8.0
+        preferred-rooms: ["SMITH", "PIT", "BREWING"]
+      - properties: "litwick"
+        weight: 7.0
+        preferred-rooms: ["CRYPT", "OSSUARY", "LIBRARY"]
+      - properties: "charcadet"
+        weight: 6.0
+        preferred-rooms: ["IMPERIAL_STAIRWAY", "PANOPTICON"]
+      - properties: "magcargo"
+        weight: 5.0
+        preferred-rooms: ["RESERVOIR", "CISTERN", "ABYSS"]
+      - properties: "durant"
+        weight: 5.0
+        preferred-rooms: ["SMITH", "PANOPTICON", "BALCONY"]
+      - properties: "turtonator"
+        weight: 3.0
+        preferred-rooms: ["ABYSS", "IMPERIAL_STAIRWAY"]
