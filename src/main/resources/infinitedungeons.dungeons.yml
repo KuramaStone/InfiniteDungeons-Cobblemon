@@ -13,11 +13,63 @@ Dungeons:
 
     # These are the possible DungeonTypes that could be selected. Completing any of them still counts as a completion for this specific dungeon.
     type-list:
-      - type: "grassbosses"
+      - type: "example"
         weight: 1
-      - type: "waterbosses"
+    # Variables here will be used when calculating the formulas. They are optional but may offer additional customization.
+    variables:
+      baseLevel: 25
+    # The commands to run on startup. Commands containing a {player} will be run for every player.
+    commands:
+      on-start:
+        - "tellraw {player} {\"text\":\"Welcome to the Dungeon!\"}"
+  # This is the id of this dungeon
+  cave:
+    # The number of lives given in this dungeon
+    max-lives-per-player: 3
+    # The max team size for the dungeon. If the user team is larger, they are asked to select which members to bring.
+    max-players-per-team: 5
+
+    # These are the possible DungeonTypes that could be selected. Completing any of them still counts as a completion for this specific dungeon.
+    type-list:
+      - type: "cave"
         weight: 1
-      - type: "firebosses"
+    # Variables here will be used when calculating the formulas. They are optional but may offer additional customization.
+    variables:
+      baseLevel: 25
+    # The commands to run on startup. Commands containing a {player} will be run for every player.
+    commands:
+      on-start:
+        - "tellraw {player} {\"text\":\"Welcome to the Dungeon!\"}"
+
+  # This is the id of this dungeon
+  ruins:
+    # The number of lives given in this dungeon
+    max-lives-per-player: 3
+    # The max team size for the dungeon. If the user team is larger, they are asked to select which members to bring.
+    max-players-per-team: 5
+
+    # These are the possible DungeonTypes that could be selected. Completing any of them still counts as a completion for this specific dungeon.
+    type-list:
+      - type: "ruins"
+        weight: 1
+    # Variables here will be used when calculating the formulas. They are optional but may offer additional customization.
+    variables:
+      baseLevel: 25
+    # The commands to run on startup. Commands containing a {player} will be run for every player.
+    commands:
+      on-start:
+        - "tellraw {player} {\"text\":\"Welcome to the Dungeon!\"}"
+
+  # This is the id of this dungeon
+  advanced:
+    # The number of lives given in this dungeon
+    max-lives-per-player: 3
+    # The max team size for the dungeon. If the user team is larger, they are asked to select which members to bring.
+    max-players-per-team: 5
+
+    # These are the possible DungeonTypes that could be selected. Completing any of them still counts as a completion for this specific dungeon.
+    type-list:
+      - type: "advanced"
         weight: 1
     # Variables here will be used when calculating the formulas. They are optional but may offer additional customization.
     variables:

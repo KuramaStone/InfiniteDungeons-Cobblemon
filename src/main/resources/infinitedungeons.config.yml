@@ -3,6 +3,36 @@ config-version: 1
 # The max team size for teams. If a team is larger than a dungeon allows, then the player will select who to bring.
 max-players-per-team: 10
 
+# The priority of each room. Every room is provided here as an additional aid for every room name.
+# The starting room will always try to be connected to the main structure with a path towards the boss.
+starting-room-priority:
+  - MUSIC
+  - BANQUET
+  - BEDROOM
+  - LIBRARY
+  - CORRIDOR
+  - STAIRWAY
+  - CROSS
+  - CRYPT
+  - RESERVOIR
+  - CISTERN
+  - OSSUARY
+  - KITCHEN
+  - CREEPER
+  - ENDER
+  - ABYSS
+  - PRISON
+  - MUSIC
+  - BREWING
+  - PANOPTICON
+  - SCULK
+  - BTEAM
+  - SMITH
+  - PIT
+  - BALCONY
+  - IMPERIAL_STAIRWAY
+  - ENTRANCE
+
 # If set to true, players will spectate their dungeon after dying. Otherw
 spectator-mode:
   enabled: true

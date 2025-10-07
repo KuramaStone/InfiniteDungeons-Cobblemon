@@ -20,6 +20,29 @@ Types:
           weight: 0.1
           preferred-rooms: [ "ender" ] # A boss's preferred room is optional, it will find a new location if the room isnt found.
     random:
+      # This determines how many Pokemon can spawn in a room. There are a few types:
+      #  This is an Area Based usage. It will spawn 1 Pokemon per 49 blocks in that room's area. So a room with an area of 100 will have 4 Spawns.
+      #  Surface Area is used by default
+      #   spawn-count-calculator:
+      #     type: area
+      #     blocks-per-pokemon: 49
+      #     surface: true # Optional, this is set to true by default. To enforce using the whole area, set this to false.
+      #     max: 8 # Optional, this is set to infinity by default. This is the max spawns permitted in the room.
+      #  This is a fixed amount
+      #   spawn-count-calculator:
+      #     type: fixed
+      #     amount: 1
+      #  This calculates it as a formula. It uses variables from the dungeon config similar to Pokemon spawns.
+      #  Additional variables for this formula:
+      #  - {room_area}: The area of the room
+      #   spawn-count-calculator:
+      #     type: formula
+      #     formula: "1+${}"
+      spawn-count-calculator:
+        type: area
+        surface: true # this is set to true by default. to disable surface area, set this to false.
+        max: 8
+        blocks-per-pokemon: 49
       base-properties: "lvl=25"
       # This is the list of possible random pokemon that can spawn. Use weights to control how likely they are to spawn based on the valid spawn conditions
       spawn-list:
@@ -63,6 +86,9 @@ Types:
           weight: 0.1
           preferred-rooms: [ "ender" ]
     random:
+      spawn-count-calculator:
+        type: formula
+        formula: "{room_area} / 9 + floor({team_size} / 2)"
       base-properties: "lvl=${randomInt(10, 20)}"
       spawn-list:
         - properties: "clefairy"
@@ -87,6 +113,11 @@ Types:
         - properties: "gengar"
           weight: 20.0
     random:
+      spawn-count-calculator:
+        type: area
+        max: 8
+        surface: true
+        blocks-per-pokemon: 25
       base-properties: "lvl=${randomInt(10, 20)} aspect=dungeon-pokemon aggression-bias=-4"
       spawn-list:
         - properties: "zubat"
@@ -137,6 +168,10 @@ Types:
         - properties: "claydol shiny=true"
           weight: 0.5
     random:
+      spawn-count-calculator:
+        type: area
+        max: 8
+        blocks-per-pokemon: 49
       base-properties: "lvl=${randomInt(15, 25)} aspect=dungeon-pokemon aggression-bias=-3"
       spawn-list:
         - properties: "baltoy"
@@ -173,52 +208,56 @@ Types:
           weight: 0.5
           preferred-rooms: ["SCULK", "CRYPT"]
 
-lava_forge:
-  pokemon-per-room: 4
-  boss:
-    base-properties: "lvl=35 aspect=forge-boss aggression-bias=-12"
-    spawn-list:
-      - properties: "magmar"
-        weight: 60.0
-      - properties: "camerupt"
-        weight: 30.0
-      - properties: "heatmor"
-        weight: 9.5
-      - properties: "magmar shiny=true"
-        weight: 0.5
-  random:
-    base-properties: "lvl=${randomInt(18, 28)} aspect=forge-pokemon aggression-bias=-5"
-    spawn-list:
-      - properties: "slugma"
-        weight: 20.0
-        preferred-rooms: ["RESERVOIR", "CISTERN", "BREWING"]
-      - properties: "numel"
-        weight: 15.0
-        preferred-rooms: ["PIT", "SMITH", "CORRIDOR"]
-      - properties: "koffing"
-        weight: 12.0
-        preferred-rooms: ["KITCHEN", "BREWING", "BANQUET"]
-      - properties: "houndour"
-        weight: 10.0
-        preferred-rooms: ["STAIRWAY", "CROSS", "BALCONY"]
-      - properties: "drilbur"
-        weight: 8.0
-        preferred-rooms: ["CORRIDOR", "STAIRWAY", "SMITH"]
-      - properties: "rolycoly"
-        weight: 8.0
-        preferred-rooms: ["SMITH", "PIT", "BREWING"]
-      - properties: "litwick"
-        weight: 7.0
-        preferred-rooms: ["CRYPT", "OSSUARY", "LIBRARY"]
-      - properties: "charcadet"
-        weight: 6.0
-        preferred-rooms: ["IMPERIAL_STAIRWAY", "PANOPTICON"]
-      - properties: "magcargo"
-        weight: 5.0
-        preferred-rooms: ["RESERVOIR", "CISTERN", "ABYSS"]
-      - properties: "durant"
-        weight: 5.0
-        preferred-rooms: ["SMITH", "PANOPTICON", "BALCONY"]
-      - properties: "turtonator"
-        weight: 3.0
-        preferred-rooms: ["ABYSS", "IMPERIAL_STAIRWAY"]
+  lava_forge:
+    pokemon-per-room: 4
+    boss:
+      base-properties: "lvl=35 aspect=forge-boss aggression-bias=-12"
+      spawn-list:
+        - properties: "magmar"
+          weight: 60.0
+        - properties: "camerupt"
+          weight: 30.0
+        - properties: "heatmor"
+          weight: 9.5
+        - properties: "magmar shiny=true"
+          weight: 0.5
+    random:
+      spawn-count-calculator:
+        type: area
+        max: 8
+        blocks-per-pokemon: 49
+      base-properties: "lvl=${randomInt(18, 28)} aspect=forge-pokemon aggression-bias=-5"
+      spawn-list:
+        - properties: "slugma"
+          weight: 20.0
+          preferred-rooms: ["RESERVOIR", "CISTERN", "BREWING"]
+        - properties: "numel"
+          weight: 15.0
+          preferred-rooms: ["PIT", "SMITH", "CORRIDOR"]
+        - properties: "koffing"
+          weight: 12.0
+          preferred-rooms: ["KITCHEN", "BREWING", "BANQUET"]
+        - properties: "houndour"
+          weight: 10.0
+          preferred-rooms: ["STAIRWAY", "CROSS", "BALCONY"]
+        - properties: "drilbur"
+          weight: 8.0
+          preferred-rooms: ["CORRIDOR", "STAIRWAY", "SMITH"]
+        - properties: "rolycoly"
+          weight: 8.0
+          preferred-rooms: ["SMITH", "PIT", "BREWING"]
+        - properties: "litwick"
+          weight: 7.0
+          preferred-rooms: ["CRYPT", "OSSUARY", "LIBRARY"]
+        - properties: "charcadet"
+          weight: 6.0
+          preferred-rooms: ["IMPERIAL_STAIRWAY", "PANOPTICON"]
+        - properties: "magcargo"
+          weight: 5.0
+          preferred-rooms: ["RESERVOIR", "CISTERN", "ABYSS"]
+        - properties: "durant"
+          weight: 5.0
+          preferred-rooms: ["SMITH", "PANOPTICON", "BALCONY"]
+        - properties: "turtonator"
+          weight: 3.0
+          preferred-rooms: ["ABYSS", "IMPERIAL_STAIRWAY"]
