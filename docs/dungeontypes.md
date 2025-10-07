@@ -1,9 +1,9 @@
-# Dungeon Types (dungeontypes.yml)
+~~# Dungeon Types (dungeontypes.yml)
 
 ## Boss Properties
 
 Each `DungeonType` defines a group of possible bosses that can spawn in a dungeon. You can use static values or formulas
-to dynamically scale difficulty.
+to dynamically scale difficulty.~~
 
 | Key                    | Default | Description                                                                                                                   |
 |------------------------|---------|-------------------------------------------------------------------------------------------------------------------------------|
@@ -15,12 +15,13 @@ to dynamically scale difficulty.
 Each `DungeonType` defined a group of Random Pokemon that can spawn. You can use static values or formulas to
 dynamically scale difficulty.
 
-| Key                       | Default | Description                                                                                                                   |
-|---------------------------|---------|-------------------------------------------------------------------------------------------------------------------------------|
-| `random.base-properties`  | —       | Properties applied to **every entry** in this type. For example, `lvl=25` will apply to all spawned bosses unless overridden. |
-| `random.spawn-list`       | —       | A list of spawnable boss Pokemon with optional weights and additional spawn rules.                                            |
-| `preferred-rooms`         | list    | Optional list of dungeon rooms where this Pokemon will spawn. Unlike the boss, it will only spawn in a valid room.            |                                           |
-| `random.pokemon-per-room` | —       | How many Pokemon to spawn per room. These Pokemon temporarily despawn after a Player leaves that room.                        |                           |
+| Key                             | Default | Description                                                                                                                   |
+|---------------------------------|---------|-------------------------------------------------------------------------------------------------------------------------------|
+| `random.base-properties`        | —       | Properties applied to **every entry** in this type. For example, `lvl=25` will apply to all spawned bosses unless overridden. |
+| `random.spawn-list`             | —       | A list of spawnable boss Pokemon with optional weights and additional spawn rules.                                            |
+| `preferred-rooms`               | list    | Optional list of dungeon rooms where this Pokemon will spawn. Unlike the boss, it will only spawn in a valid room.            |                                           |
+| `random.pokemon-per-room`       | —       | How many Pokemon to spawn per room. These Pokemon temporarily despawn after a Player leaves that room.                        |                                           |
+| `random.spawn-count-calculator` | —       | Determine how many Pokemon will be able to spawn per room.                                                                    |                           |
 
 ### Advanced `preferred-rooms`
 

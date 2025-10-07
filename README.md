@@ -46,33 +46,31 @@ This mod adds a highly configurable experience that allows players to enter proc
 
 ### Dungeon Commands
 
-| Command | Permission | Description |
-|---------|------------|-------------|
-| `/infdungeon startsolo <dungeon>` | `infinitedungeons.commands.startsolo` | Starts a solo dungeon using the specified dungeon config. |
+| Command                           | Permission                            | Description                                                                                                             |
+|-----------------------------------|---------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| `/infdungeon startsolo <dungeon>` | `infinitedungeons.commands.startsolo` | Starts a solo dungeon using the specified dungeon config.                                                               |
 | `/infdungeon startteam <dungeon>` | `infinitedungeons.commands.startteam` | Starts a team dungeon in the specified dungeon config. All team members receive a chat + GUI prompt to join or decline. |
 
 ### Admin Commands
 
-| Command | Permission | Description |
-|---------|------------|-------------|
-| `/infdungeon admin startsolo <dungeon> <player>` | `infinitedungeons.commands.admin.startteam` | Instantly starts a solo dungeon for the given player (no prompt). |
+| Command                                              | Permission                                  | Description                                                                                            |
+|------------------------------------------------------|---------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| `/infdungeon admin startsolo <dungeon> <player>`     | `infinitedungeons.commands.admin.startteam` | Instantly starts a solo dungeon for the given player (no prompt).                                      |
 | `/infdungeon admin startteam <dungeon> <2+ players>` | `infinitedungeons.commands.admin.startteam` | Instantly starts a team dungeon for the given players (no prompt). Does **not** affect existing teams. |
 
 ### Team Commands
 
-| Command | Permission | Description |
-|---------|------------|-------------|
+| Command                                           | Permission                               | Description                                                                                                    |
+|---------------------------------------------------|------------------------------------------|----------------------------------------------------------------------------------------------------------------|
 | `/infdungeon team create <teamName> [players...]` | `infinitedungeons.commands.teams.create` | Creates a new team with you as the owner. Optionally invite players during creation (if they have permission). |
-| `/infdungeon team invite [player]` | `infinitedungeons.commands.teams.invite` | Invite a player to your team. |
-| `/infdungeon team delete` | `infinitedungeons.commands.teams.delete` | Deletes your team if you are the owner. |
-| `/infdungeon team leave` | `infinitedungeons.commands.teams.leave` | Leave your team if you are not the owner. |
+| `/infdungeon team invite [player]`                | `infinitedungeons.commands.teams.invite` | Invite a player to your team.                                                                                  |
+| `/infdungeon team delete`                         | `infinitedungeons.commands.teams.delete` | Deletes your team if you are the owner.                                                                        |
+| `/infdungeon team leave`                          | `infinitedungeons.commands.teams.leave`  | Leave your team if you are not the owner.                                                                      |
 
 
 ---
 
-## Configuration
-
-The dungeon system is fully configurable via the config files.
+## Configuration (config.yml)
 
 ### General Config Options (config.yml)
 | Key                           | Default | Description                                                                    |
@@ -80,39 +78,6 @@ The dungeon system is fully configurable via the config files.
 | `max-players-per-team`        | 10      | The max team size permitted. Separate from dungeon team sizes.                 |
 | `spectator-mode.enabled`      | True    | If enabled, players can spectate after death. If disabled, they are sent home. |
 | `spectator-mode.only-on-team` | True    | If enabled, players cannot freecam while spectating.                           |
-
-### Dungeons Configuration (dungeons.yml)
-
-These settings control boss spawns, difficulty, team requirements, and optional startup commands.
-
-| Key                    | Default | Description                                                                                             |
-|------------------------|---------|---------------------------------------------------------------------------------------------------------|
-| `max-lives-per-player` | 3       | The number of lives each player receives in this dungeon.                                               |
-| `max-players-per-team` | 5       | The maximum team size allowed in this dungeon. Teams larger than this are prompted to select members.   |
-| `type-list`            | —       | The list of possible DungeonTypes that may spawn. Each type can have an optional weight for randomness. |
-| `variables`            | —       | Optional key/value pairs used in dungeon formulas or calculations.                                      |
-| `commands.on-start`    | —       | Commands to run when the dungeon starts. Commands containing `{player}` are run for each player.        |
-
-#### Example
-
-```yaml
-Dungeons:
-  example:
-    max-lives-per-player: 3
-    max-players-per-team: 5
-    type-list:
-      - type: "grassbosses"
-        weight: 1
-      - type: "waterbosses"
-        weight: 1
-      - type: "firebosses"
-        weight: 1
-    variables:
-      baseLevel: 25
-    commands:
-      on-start:
-        - "tellraw {player} {\"text\":\"Welcome to the Dungeon!\"}"
-```
 
 ### [Dungeon Types (dungeontypes.yml)](docs/dungeontypes.md)
 
