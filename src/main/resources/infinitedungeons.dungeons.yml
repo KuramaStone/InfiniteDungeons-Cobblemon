@@ -4,8 +4,12 @@ config-version: 1
 # These are the controller of the Minigame. It defines what bosses could spawn, the difficulty of the dungeon, and whatever other data would be needed.
 
 Dungeons:
+
+# Example dungeon: EXAMPLE... duh
   # This is the id of this dungeon
   example:
+    # The display name for this dungeon config
+    display-name: "<red>Example</red>"
     # The number of lives given in this dungeon
     max-lives-per-player: 3
     # The max team size for the dungeon. If the user team is larger, they are asked to select which members to bring.
@@ -18,12 +22,25 @@ Dungeons:
     # Variables here will be used when calculating the formulas. They are optional but may offer additional customization.
     variables:
       baseLevel: 25
-    # The commands to run on startup. Commands containing a {player} will be run for every player.
+    # Optional section. The commands to run on startup. Commands containing a {player} will be run for every player, but otherwise they run once.
     commands:
       on-start:
         - "tellraw {player} {\"text\":\"Welcome to the Dungeon!\"}"
+    # Optional section. These will be given when entering each room. Only enter rooms you'd like to have an intro. See the config.yml's "starting-room-priority" for a list of room names.
+    introductions-per-room:
+      kitchen:
+        title: ""
+        subtitle: "<gold>Hungry?"
+        fadeInTicks: 10
+        stayTicks: 20
+        fadeOutTicks: 10
+
+
+  # Example dungeon: CAVES
   # This is the id of this dungeon
   cave:
+    # The display name for this dungeon config
+    display-name: "<#b78e5c>Caves</#b78e5c>"
     # The number of lives given in this dungeon
     max-lives-per-player: 3
     # The max team size for the dungeon. If the user team is larger, they are asked to select which members to bring.
@@ -40,9 +57,19 @@ Dungeons:
     commands:
       on-start:
         - "tellraw {player} {\"text\":\"Welcome to the Dungeon!\"}"
+    # Optional section. These will be given when entering each room. Only enter rooms you'd like to have an intro. See the config.yml's "starting-room-priority" for a list of room names.
+    introductions-per-room:
+      kitchen:
+        title: ""
+        subtitle: "<gold>Hungry?"
+        fadeInTicks: 10
+        stayTicks: 20
+        fadeOutTicks: 10
 
   # This is the id of this dungeon
   ruins:
+    # The display name for this dungeon config
+    display-name: "<#ea4200>Ruins</#ea4200>"
     # The number of lives given in this dungeon
     max-lives-per-player: 3
     # The max team size for the dungeon. If the user team is larger, they are asked to select which members to bring.
@@ -59,9 +86,19 @@ Dungeons:
     commands:
       on-start:
         - "tellraw {player} {\"text\":\"Welcome to the Dungeon!\"}"
+    # Optional section. These will be given when entering each room. Only enter rooms you'd like to have an intro. See the config.yml's "starting-room-priority" for a list of room names.
+    introductions-per-room:
+      kitchen:
+        title: ""
+        subtitle: "<gold>Hungry?"
+        fadeInTicks: 10
+        stayTicks: 20
+        fadeOutTicks: 10
 
   # This is the id of this dungeon
   advanced:
+    # The display name for this dungeon config
+    display-name: "<gold><b>Advanced</b></gold>"
     # The number of lives given in this dungeon
     max-lives-per-player: 3
     # The max team size for the dungeon. If the user team is larger, they are asked to select which members to bring.
@@ -78,3 +115,11 @@ Dungeons:
     commands:
       on-start:
         - "tellraw {player} {\"text\":\"Welcome to the Dungeon!\"}"
+    # Optional section. These will be given when entering each room. Only enter rooms you'd like to have an intro. See the config.yml's "starting-room-priority" for a list of room names.
+    introductions-per-room:
+      kitchen:
+        title: ""
+        subtitle: "<gold>Hungry?"
+        fadeInTicks: 10
+        stayTicks: 20
+        fadeOutTicks: 10

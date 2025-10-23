@@ -4,9 +4,9 @@ Loot Pools define sets of items that can drop from dungeons. Each pool has a wei
 
 | Key               | Default | Description                                                                  |
 |-------------------|---------|------------------------------------------------------------------------------|
-| `pool weight`     | —       | Determines how likely this pool is selected relative to other pools.         |
-| `pulls`           | —       | Range `[min, max]` indicating how many items to randomly pull from the pool. |
-| `pool`            | —       | List of individual loot entries (shown below).                               |
+| `pool weight`     | -       | Determines how likely this pool is selected relative to other pools.         |
+| `pulls`           | -       | Range `[min, max]` indicating how many items to randomly pull from the pool. |
+| `pool`            | -       | List of individual loot entries (shown below).                               |
 
 ---
 
