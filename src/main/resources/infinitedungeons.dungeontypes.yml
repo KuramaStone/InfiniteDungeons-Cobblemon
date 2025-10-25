@@ -9,7 +9,7 @@ Types:
     # These properties are applied at the end of every specific entry. For example, the first entry here would become "bulbasaur lvl=25" when spawning the boss.
     boss:
       # This example showcases a level that raises by 5 for each avg_times_completed AND causes higher aggression based on the max_times_completed divided by 5. baseLevel is a variable provided by the parent Dungeon config located in /dungeons.yml
-      base-properties: "lvl=${min(100, {baseLevel}+{avg_times_completed}*5)} aspect=dungeon-pokemon aspect=fof-players-only aggression-bias=-${{max_times_completed}/5.0}"
+      base-properties: "lvl=${min(100, {baseLevel}+{avg_times_completed}*5)} aspect=dungeon-pokemon fof-players-only aggression-bias=-${{max_times_completed}/5.0}"
       # This is the list of possible bosses that can spawn here. Use weights to control how likely they are to spawn
       spawn-list:
         - properties: "mewtwo"
@@ -43,7 +43,7 @@ Types:
         surface: true # this is set to true by default. to disable surface area, set this to false.
         max: 8
         blocks-per-pokemon: 49
-      base-properties: "lvl=25 aspect=fof-players-only"
+      base-properties: "lvl=25 fof-players-only"
       # This is the list of possible random pokemon that can spawn. Use weights to control how likely they are to spawn based on the valid spawn conditions
       spawn-list:
         - properties: "clefairy"
@@ -75,7 +75,7 @@ Types:
     pokemon-per-room: 4
     boss:
       # This example showcases a level that raises by 5 for each avg_times_completed AND causes higher aggression based on the max_times_completed divided by 5. baseLevel is a variable provided by the parent Dungeon config located in /dungeons.yml
-      base-properties: "lvl=${min(100, {baseLevel}+{avg_times_completed}*5)} aspect=dungeon-pokemon aspect=fof-players-only aggression-bias=-${{max_times_completed}/5.0}"
+      base-properties: "lvl=${min(100, {baseLevel}+{avg_times_completed}*5)} aspect=dungeon-pokemon fof-players-only aggression-bias=-${{max_times_completed}/5.0}"
       spawn-list:
         - properties: "mewtwo"
           weight: 99.9
@@ -88,7 +88,7 @@ Types:
       spawn-count-calculator:
         type: formula
         formula: "{room_area} / 9 + floor({team_size} / 2)"
-      base-properties: "lvl=${randomInt(10, 20)} aspect=fof-players-only"
+      base-properties: "lvl=${randomInt(10, 20)} fof-players-only"
       spawn-list:
         - properties: "clefairy"
           weight: 99.9
@@ -103,7 +103,7 @@ Types:
   cave:
     pokemon-per-room: 4
     boss:
-      base-properties: "lvl=25 aspect=dungeon-boss aspect=fof-players-only aggression-bias=-10 uncatchable"
+      base-properties: "lvl=25 aspect=dungeon-boss fof-players-only aggression-bias=-10 uncatchable"
       spawn-list:
         - properties: "clefable"
           weight: 80.0
@@ -117,7 +117,7 @@ Types:
         max: 8
         surface: true
         blocks-per-pokemon: 40
-      base-properties: "lvl=${randomInt(10, 20)} aspect=dungeon-pokemon aspect=fof-players-only aggression-bias=-4"
+      base-properties: "lvl=${randomInt(10, 20)} aspect=dungeon-pokemon fof-players-only aggression-bias=-4"
       spawn-list:
         - properties: "zubat"
           weight: 25.0
@@ -156,7 +156,7 @@ Types:
   ruins:
     pokemon-per-room: 4
     boss:
-      base-properties: "lvl=30 aspect=dungeon-boss aspect=fof-players-only aggression-bias=-8"
+      base-properties: "lvl=30 aspect=dungeon-boss fof-players-only aggression-bias=-8"
       spawn-list:
         - properties: "claydol"
           weight: 70.0
@@ -172,7 +172,7 @@ Types:
         max: 8
         surface: true
         blocks-per-pokemon: 40
-      base-properties: "lvl=${randomInt(15, 25)} aspect=dungeon-pokemon aspect=fof-players-only aggression-bias=-3"
+      base-properties: "lvl=${randomInt(15, 25)} aspect=dungeon-pokemon fof-players-only aggression-bias=-3"
       spawn-list:
         - properties: "baltoy"
           weight: 20.0
@@ -211,7 +211,7 @@ Types:
   lava_forge:
     pokemon-per-room: 4
     boss:
-      base-properties: "lvl=35 aspect=forge-boss aspect=fof-players-only aggression-bias=-12"
+      base-properties: "lvl=35 aspect=forge-boss fof-players-only aggression-bias=-12"
       spawn-list:
         - properties: "magmar"
           weight: 60.0
@@ -227,7 +227,7 @@ Types:
         max: 8
         surface: true
         blocks-per-pokemon: 40
-      base-properties: "lvl=${randomInt(18, 28)} aspect=forge-pokemon aspect=fof-players-only aggression-bias=-5"
+      base-properties: "lvl=${randomInt(18, 28)} aspect=forge-pokemon fof-players-only aggression-bias=-5"
       spawn-list:
         - properties: "slugma"
           weight: 20.0
