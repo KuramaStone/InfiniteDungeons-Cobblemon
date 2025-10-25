@@ -62,15 +62,14 @@ Types:
   # - {avg_times_completed}: The number of times this dungeon has been beaten on average for this DungeonTeam
   # - {max_times_completed}: The number of times this dungeon has been beaten by the highest value team member
   # - {team_size}: The size of the player team in the dungeon
-  # These are provided by JavaScript. For a full list, look at the "Static Methods" section here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math#static_methods
+  # These are functions for you to use here:
   # - abs(x): Returns the absolute value
   # - floor(x): Returns after dropping value to the lower whole number (if not already a whole number)
   # - round(x): Returns the closest whole number
   # - ceil(x): Returns after raising the value to the higher whole number (if not already a whole number)
   # - min(x, y): Returns the lower value between the two
   # - max(x, y): Returns the higher value between the two
-  # - random(x, y): Returns a random decimal between 0.0 and 1.0
-  # And these are ones I add to fill any gaps needed:
+  # - random(): Returns a random decimal between 0.0 and 1.0
   # - randomInt(min, max): Return a random number from an inclusive-inclusive range. So randomInt(0, 5) can get 0, 1, 2, 3, 4, and 5
   advanced:
     pokemon-per-room: 4
