@@ -15,6 +15,7 @@ These settings control boss spawns, difficulty, team requirements, and optional 
 | `variables`                     | -       | Optional key/value pairs used in dungeon formulas or calculations.                                              |
 | `commands.on-start`             | -       | Optionally run commands to run when the dungeon starts. Commands containing `{player}` are run for each player. |
 | `introductions-per-room.<room>` | -       | Optionally set a title message introduction for each room type.                                                 |
+| `messages`                      | -       | Optionally add messages to certain game events with chat, action bar, sound, and/or title message.              |
 
 ### Example
 ```yaml
