@@ -38,3 +38,40 @@ spectator-mode:
   enabled: true
   # If true, then the spectator will be locked to teammembers only.
   only-on-team: true
+
+# These commands cannot be used from SURVIVAL PLAYERS inside a dungeon world.
+# Note that these are the raw text a player uses, so use all versions of the command.
+# WARNING: It is recommended that you change this commands as needed. These are examples to help you understand usage.
+# By default, all commands are banned except a short list.
+dungeon-commands:
+  # If true, then the whitelist has priority over the blacklist. So if the blacklist bans it, but whitelist allows, then it is permitted still.
+  does-whitelist-have-priority: true
+
+  # These command are set to be permitted
+  whitelist:
+    # Any command starting with this prefix will ALWAYS be excluded. Dont forget to end on a space if desired!
+    prefix:
+      - "/infinitedungeons "
+      - "/infinitedungeon "
+      - "/infdungeons "
+      - "/infdungeon "
+      - "/dungeons "
+      - "/dungeons "
+      - "/spawn " # This catches any command that starts with this exact match
+      - "/feed "
+      - "/msg "
+      - "/m "
+      - "/r "
+    # This allows for regex matching. This can do almost anything if you research: https://regex101.com/
+    regex:
+      - "/spawn" # This is an EXACT match for a player using "/spawn"
+
+  # These commands are not permitted.
+  blacklist:
+    # Any command starting with this prefix will ALWAYS be excluded.
+    # Use ".*" to ban all commands!
+    prefix:
+      - "/ban BrookEternal for being too cool for school" # Prevents banning BrookEternal for being too cool while inside a dungeon
+    # This allows for regex matching. This can do almost anything if you research: https://regex101.com/
+    regex:
+      - ".*" # Disable pokeheal entirely
