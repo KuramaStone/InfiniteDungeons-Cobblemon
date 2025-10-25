@@ -171,7 +171,8 @@ Types:
       spawn-count-calculator:
         type: area
         max: 8
-        blocks-per-pokemon: 49
+        surface: true
+        blocks-per-pokemon: 40
       base-properties: "lvl=${randomInt(15, 25)} aspect=dungeon-pokemon aspect=fof-players-only aggression-bias=-3"
       spawn-list:
         - properties: "baltoy"
@@ -225,7 +226,8 @@ Types:
       spawn-count-calculator:
         type: area
         max: 8
-        blocks-per-pokemon: 49
+        surface: true
+        blocks-per-pokemon: 40
       base-properties: "lvl=${randomInt(18, 28)} aspect=forge-pokemon aspect=fof-players-only aggression-bias=-5"
       spawn-list:
         - properties: "slugma"
