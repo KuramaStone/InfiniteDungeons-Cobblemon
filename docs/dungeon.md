@@ -19,8 +19,6 @@ These settings control boss spawns, difficulty, team requirements, and optional 
 ### Example
 ```yaml
 Dungeons:
-
-  # Example dungeon: EXAMPLE... duh
   # This is the id of this dungeon
   example:
     # The display name for this dungeon config
@@ -49,4 +47,34 @@ Dungeons:
         fadeInTicks: 10
         stayTicks: 20
         fadeOutTicks: 10
+    # These are messages sent to players based on certain dungeon events
+    messages:
+      on-death:
+        sound: "entity.player.death" # Death sound is ommitted in mod
+        title:
+          title: "<red>You died!"
+          fadeInTicks: 10
+          stayTicks: 20
+          fadeOutTicks: 10
+      leave-solo:
+        title:
+          title: "<red>You have left the Dungeon"
+          fadeInTicks: 10
+          stayTicks: 20
+          fadeOutTicks: 10
+      leave-team:
+        title:
+          title: "<red>Your team has left the Dungeon"
+          fadeInTicks: 10
+          stayTicks: 20
+          fadeOutTicks: 10
+      boss-defeated:
+        title:
+          title: "<red>The boss has been defeated!"
+          subtitle: "<dark_red>The dungeon will kick you soon!"
+          fadeInTicks: 10
+          stayTicks: 20
+          fadeOutTicks: 10
+      on-respawn:
+        sound: "minecraft:entity.player.teleport"
 ```
