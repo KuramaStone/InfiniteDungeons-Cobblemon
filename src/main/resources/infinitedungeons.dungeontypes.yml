@@ -21,11 +21,11 @@ Types:
           preferred-rooms: [ "ender" ] # A boss's preferred room is optional, it will find a new location if the room isnt found.
     random:
       # This determines how many Pokemon can spawn in a room. There are a few types:
-      #  This is an Area Based usage. It will spawn 1 Pokemon per 49 blocks in that room's area. So a room with an area of 100 will have 4 Spawns.
+      #  This is an Area Based usage. It will spawn 1 Pokemon per 25 blocks in that room's area. So a room with an area of 100 will have 4 Spawns.
       #  Surface Area is used by default
       #   spawn-count-calculator:
       #     type: area
-      #     blocks-per-pokemon: 49
+      #     blocks-per-pokemon: 25
       #     surface: true # Optional, this is set to true by default. To enforce using the whole area, set this to false.
       #     max: 8 # Optional, this is set to infinity by default. This is the max spawns permitted in the room.
       #  This is a fixed amount
@@ -52,6 +52,25 @@ Types:
         - properties: "clefairy shiny=true"
           weight: 0.1
           preferred-rooms: [ "cistern" ]
+    # Some generic config values
+    options:
+      allow-spawner-mob-spawners: true
+      # Any and all gamerules should function here. The gamerules only apply to the dungeon level.
+      gamerules:
+        doMobSpawning: true
+        doMobLoot: false
+        mobGriefing: false
+    # These are the loot pools that can generate in barrels and chests.
+    # You can define a default loot pool, but the default will be overriden if you specify.
+    loot:
+      default:
+        - pool: common
+          weight: 99
+        - pool: rare
+          weight: 1
+      kitchen:
+        - pool: rare
+          weight: 1
 
 
   # This example uses formulas to make it grow increasingly difficult
@@ -72,7 +91,6 @@ Types:
   # - random(): Returns a random decimal between 0.0 and 1.0
   # - randomInt(min, max): Return a random number from an inclusive-inclusive range. So randomInt(0, 5) can get 0, 1, 2, 3, 4, and 5
   advanced:
-    pokemon-per-room: 4
     boss:
       # This example showcases a level that raises by 5 for each avg_times_completed AND causes higher aggression based on the max_times_completed divided by 5. baseLevel is a variable provided by the parent Dungeon config located in /dungeons.yml
       base-properties: "lvl=${min(100, {baseLevel}+{avg_times_completed}*5)} aspect=dungeon-pokemon fof-players-only aggression-bias=-${{max_times_completed}/5.0}"
@@ -96,12 +114,30 @@ Types:
         - properties: "clefairy shiny=true"
           weight: 0.1
           preferred-rooms: [ "cistern" ] # You can select certain rooms from RogueLike Dungeons that it will attempt to spawn in
+    # Some generic config values
+    options:
+      allow-spawner-mob-spawners: true
+      # Any and all gamerules should function here. The gamerules only apply to the dungeon level.
+      gamerules:
+        doMobSpawning: true
+        doMobLoot: false
+        mobGriefing: false
+    # These are the loot pools that can generate in barrels and chests.
+    # You can define a default loot pool, but the default will be overriden if you specify.
+    loot:
+      default:
+        - pool: common
+          weight: 99
+        - pool: rare
+          weight: 1
+      kitchen:
+        - pool: rare
+          weight: 1
 
 
   # Functional examples
   # Cave is a functional example of a cave with different spawns in rooms, different bosses
   cave:
-    pokemon-per-room: 4
     boss:
       base-properties: "lvl=25 aspect=dungeon-boss fof-players-only aggression-bias=-10 uncatchable"
       spawn-list:
@@ -152,9 +188,27 @@ Types:
         - properties: "clefable"
           weight: 0.2
           preferred-rooms: ["-*", "IMPERIAL_STAIRWAY"]
+    # Some generic config values
+    options:
+      allow-spawner-mob-spawners: true
+      # Any and all gamerules should function here. The gamerules only apply to the dungeon level.
+      gamerules:
+        doMobSpawning: true
+        doMobLoot: false
+        mobGriefing: false
+    # These are the loot pools that can generate in barrels and chests.
+    # You can define a default loot pool, but the default will be overriden if you specify.
+    loot:
+      default:
+        - pool: common
+          weight: 99
+        - pool: rare
+          weight: 1
+      kitchen:
+        - pool: rare
+          weight: 1
 
   ruins:
-    pokemon-per-room: 4
     boss:
       base-properties: "lvl=30 aspect=dungeon-boss fof-players-only aggression-bias=-8"
       spawn-list:
@@ -207,9 +261,27 @@ Types:
         - properties: "spiritomb"
           weight: 0.5
           preferred-rooms: ["SCULK", "CRYPT"]
+    # Some generic config values
+    options:
+      allow-spawner-mob-spawners: true
+      # Any and all gamerules should function here. The gamerules only apply to the dungeon level.
+      gamerules:
+        doMobSpawning: true
+        doMobLoot: false
+        mobGriefing: false
+    # These are the loot pools that can generate in barrels and chests.
+    # You can define a default loot pool, but the default will be overriden if you specify.
+    loot:
+      default:
+        - pool: common
+          weight: 99
+        - pool: rare
+          weight: 1
+      kitchen:
+        - pool: rare
+          weight: 1
 
   lava_forge:
-    pokemon-per-room: 4
     boss:
       base-properties: "lvl=35 aspect=forge-boss fof-players-only aggression-bias=-12"
       spawn-list:
@@ -262,3 +334,22 @@ Types:
         - properties: "turtonator"
           weight: 3.0
           preferred-rooms: ["ABYSS", "IMPERIAL_STAIRWAY"]
+    # Some generic config values
+    options:
+      allow-spawner-mob-spawners: true
+      # Any and all gamerules should function here. The gamerules only apply to the dungeon level.
+      gamerules:
+        doMobSpawning: true
+        doMobLoot: false
+        mobGriefing: false
+    # These are the loot pools that can generate in barrels and chests.
+    # You can define a default loot pool, but the default will be overriden if you specify.
+    loot:
+      default:
+        - pool: common
+          weight: 99
+        - pool: rare
+          weight: 1
+      kitchen:
+        - pool: rare
+          weight: 1

@@ -51,6 +51,7 @@ dungeon-commands:
   whitelist:
     # Any command starting with this prefix will ALWAYS be excluded. Dont forget to end on a space if desired!
     prefix:
+      - "/gamemode creative " # Allow creative for admins needing to enter it for more command access
       - "/infinitedungeons "
       - "/infinitedungeon "
       - "/infdungeons "

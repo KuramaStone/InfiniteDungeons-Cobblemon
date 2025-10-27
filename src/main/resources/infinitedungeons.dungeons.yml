@@ -37,7 +37,7 @@ Dungeons:
     # These are messages sent to players based on certain dungeon events
     messages:
       on-death:
-        sound: "entity.player.death" # Death sound is ommitted in mod
+        sound: "entity.player.death"
         title:
           title: "<red>You died!"
           fadeInTicks: 10

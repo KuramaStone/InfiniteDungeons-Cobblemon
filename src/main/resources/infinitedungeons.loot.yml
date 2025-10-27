@@ -13,7 +13,6 @@ config-version: 1
 #        weight: 2 # How often this item is to be selected compared to other items in the pool
 Loot Pools:
   common:
-    pool weight: 9
     pulls: [8, 16]
     pool:
       - item: "nether_wart"
@@ -26,7 +25,6 @@ Loot Pools:
         amount: [1, 1]
         weight: 1
   rare:
-    pool weight: 1
     pulls: [8, 16]
     pool:
       - item: "paper[minecraft:custom_model_data=1]"
