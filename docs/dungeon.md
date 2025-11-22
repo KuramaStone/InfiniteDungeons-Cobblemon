@@ -1,23 +1,28 @@
 # Dungeons (dungeons.yml)
 
-Each `Dungeon` is functionally a gamemode that players can complete. It defines how many lives they get, max players inside, and which dungeon types can appear.
+Each `Dungeon` is functionally a gamemode that players can complete. It defines how many lives they get, max players
+inside, and which dungeon types can appear.
 
 ### Dungeons Configuration (dungeons.yml)
 
 These settings control boss spawns, difficulty, team requirements, and optional startup commands.
 
-| Key                             | Default | Description                                                                                                     |
-|---------------------------------|---------|-----------------------------------------------------------------------------------------------------------------|
-| `display-name`                  | 3       | Pretty name using MiniMessage formatting for player views.                                                      |
-| `max-lives-per-player`          | 3       | The number of lives each player receives in this dungeon.                                                       |
-| `max-players-per-team`          | 5       | The maximum team size allowed in this dungeon. Teams larger than this are prompted to select members.           |
-| `type-list`                     | -       | The list of possible DungeonTypes that may spawn. Each type can have an optional weight for randomness.         |
-| `variables`                     | -       | Optional key/value pairs used in dungeon formulas or calculations.                                              |
-| `commands.on-start`             | -       | Optionally run commands to run when the dungeon starts. Commands containing `{player}` are run for each player. |
-| `introductions-per-room.<room>` | -       | Optionally set a title message introduction for each room type.                                                 |
-| `messages`                      | -       | Optionally add messages to certain game events with chat, action bar, sound, and/or title message.              |
+| Key                             | Default | Description                                                                                                      |
+|---------------------------------|---------|------------------------------------------------------------------------------------------------------------------|
+| `display-name`                  | 3       | Pretty name using MiniMessage formatting for player views.                                                       |
+| `max-lives-per-player`          | 3       | The number of lives each player receives in this dungeon.                                                        |
+| `max-players-per-team`          | 5       | The maximum team size allowed in this dungeon. Teams larger than this are prompted to select members.            |
+| `type-list`                     | -       | The list of possible DungeonTypes that may spawn. Each type can have an optional weight for randomness.          |
+| `variables`                     | -       | Optional key/value pairs used in dungeon formulas or calculations.                                               |
+| `commands.on-start`             | -       | Optionally run commands to run when the dungeon starts. Commands containing `{player}` are run for each player.  |
+| `commands.on-win`               | -       | Optionally run commands to run when the dungeon is won. Commands containing `{player}` are run for each player.  |
+| `commands.on-loss`              | -       | Optionally run commands to run when the dungeon is lost. Commands containing `{player}` are run for each player. |
+| `introductions-per-room.<room>` | -       | Optionally set a title message introduction for each room type.                                                  |
+| `messages`                      | -       | Optionally add messages to certain game events with chat, action bar, sound, and/or title message.               |
+| `use-adventure-mode`            | true    | If true, the players will enter in adventure mode. They will return to Survival when leaving.                    |
 
 ### Example
+
 ```yaml
 Dungeons:
   # This is the id of this dungeon

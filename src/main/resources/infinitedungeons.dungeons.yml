@@ -5,19 +5,22 @@ config-version: 1
 
 Dungeons:
 
-# Example dungeon: EXAMPLE... duh
-  # This is the id of this dungeon
-  example:
+  # "config_example" and "advanced_example" is more intended to showcase features than be used. Use CAVE or RUINS as a template.
+  # This is the id of this dungeon.
+  config_example:
     # The display name for this dungeon config
     display-name: "<red>Example</red>"
+    # duration before a player can play this again
+    cooldown: 10m
+    # should use adventure mode for players on entering
+    use-adventure-mode: true
     # The number of lives given in this dungeon
     max-lives-per-player: 3
     # The max team size for the dungeon. If the user team is larger, they are asked to select which members to bring.
     max-players-per-team: 5
-
     # These are the possible DungeonTypes that could be selected. Completing any of them still counts as a completion for this specific dungeon.
     type-list:
-      - type: "example"
+      - type: "config_example"
         weight: 1
     # Variables here will be used when calculating the formulas. They are optional but may offer additional customization.
     variables:
@@ -37,6 +40,8 @@ Dungeons:
     # These are messages sent to players based on certain dungeon events
     messages:
       on-death:
+        chat-message: null
+        action-bar: null
         sound: "entity.player.death"
         title:
           title: "<red>You died!"
@@ -65,12 +70,14 @@ Dungeons:
       on-respawn:
         sound: "minecraft:entity.player.teleport"
 
-
-  # Example dungeon: CAVES
   # This is the id of this dungeon
   cave:
     # The display name for this dungeon config
     display-name: "<#b78e5c>Caves</#b78e5c>"
+    # duration before a player can play this again
+    cooldown: 10m
+    # should use adventure mode for players on entering
+    use-adventure-mode: true
     # The number of lives given in this dungeon
     max-lives-per-player: 3
     # The max team size for the dungeon. If the user team is larger, they are asked to select which members to bring.
@@ -130,6 +137,10 @@ Dungeons:
   ruins:
     # The display name for this dungeon config
     display-name: "<#ea4200>Ruins</#ea4200>"
+    # duration before a player can play this again
+    cooldown: 10m
+    # should use adventure mode for players on entering
+    use-adventure-mode: true
     # The number of lives given in this dungeon
     max-lives-per-player: 3
     # The max team size for the dungeon. If the user team is larger, they are asked to select which members to bring.
@@ -186,9 +197,13 @@ Dungeons:
         sound: "minecraft:entity.player.teleport"
 
   # This is the id of this dungeon
-  advanced:
+  advanced_example:
     # The display name for this dungeon config
     display-name: "<gold><b>Advanced</b></gold>"
+    # duration before a player can play this again
+    cooldown: 10m
+    # should use adventure mode for players on entering
+    use-adventure-mode: true
     # The number of lives given in this dungeon
     max-lives-per-player: 3
     # The max team size for the dungeon. If the user team is larger, they are asked to select which members to bring.
@@ -196,7 +211,7 @@ Dungeons:
 
     # These are the possible DungeonTypes that could be selected. Completing any of them still counts as a completion for this specific dungeon.
     type-list:
-      - type: "advanced"
+      - type: "advanced_example"
         weight: 1
     # Variables here will be used when calculating the formulas. They are optional but may offer additional customization.
     variables:

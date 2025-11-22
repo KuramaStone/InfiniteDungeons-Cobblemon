@@ -1,7 +1,11 @@
-config-version: 1
+config-version: 2
 
 # The max team size for teams. If a team is larger than a dungeon allows, then the player will select who to bring.
 max-players-per-team: 10
+
+# This is the cooldown for accessing any dungeon. If on cooldown, a player cannot enter any dungeon at all.
+# For dungeon specific cooldowns, modify that inside of dungeons.yml
+global-dungeon-cooldown: 0s
 
 # The priority of each room. Every room is provided here as an additional aid for every room name.
 # The starting room will always try to be connected to the main structure with a path towards the boss.
@@ -51,13 +55,13 @@ dungeon-commands:
   whitelist:
     # Any command starting with this prefix will ALWAYS be excluded. Dont forget to end on a space if desired!
     prefix:
-      - "/gamemode creative " # Allow creative for admins needing to enter it for more command access
+      - "/gamemode creative" # Allow creative for admins needing to enter it for more command access
       - "/infinitedungeons "
       - "/infinitedungeon "
       - "/infdungeons "
       - "/infdungeon "
       - "/dungeons "
-      - "/dungeons "
+      - "/dungeon "
       - "/spawn " # This catches any command that starts with this exact match
       - "/feed "
       - "/msg "
@@ -75,5 +79,4 @@ dungeon-commands:
       - "/ban BrookEternal for being too cool for school" # Prevents banning BrookEternal for being too cool while inside a dungeon
     # This allows for regex matching. This can do almost anything if you research: https://regex101.com/
     regex:
-      - ".*" # Disable pokeheal entirely
-      - "/gamemode (?!survival).*" # Disable all gamemode commands unless it is also starts with survival.
+      - ".*" # Disable all commands
