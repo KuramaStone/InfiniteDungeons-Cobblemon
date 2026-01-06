@@ -10,6 +10,7 @@ These settings control boss spawns, difficulty, team requirements, and optional 
 | Key                             | Default | Description                                                                                                      |
 |---------------------------------|---------|------------------------------------------------------------------------------------------------------------------|
 | `display-name`                  | 3       | Pretty name using MiniMessage formatting for player views.                                                       |
+| `cooldown`                      | 10m     | Duration before a player can play this dungeon again.                                                            |
 | `max-lives-per-player`          | 3       | The number of lives each player receives in this dungeon.                                                        |
 | `max-players-per-team`          | 5       | The maximum team size allowed in this dungeon. Teams larger than this are prompted to select members.            |
 | `type-list`                     | -       | The list of possible DungeonTypes that may spawn. Each type can have an optional weight for randomness.          |
@@ -26,17 +27,20 @@ These settings control boss spawns, difficulty, team requirements, and optional 
 ```yaml
 Dungeons:
   # This is the id of this dungeon
-  example:
+  config_example:
     # The display name for this dungeon config
     display-name: "<red>Example</red>"
+    # duration before a player can play this again
+    cooldown: 10m
+    # should use adventure mode for players on entering
+    use-adventure-mode: true
     # The number of lives given in this dungeon
     max-lives-per-player: 3
     # The max team size for the dungeon. If the user team is larger, they are asked to select which members to bring.
     max-players-per-team: 5
-
     # These are the possible DungeonTypes that could be selected. Completing any of them still counts as a completion for this specific dungeon.
     type-list:
-      - type: "example"
+      - type: "config_example"
         weight: 1
     # Variables here will be used when calculating the formulas. They are optional but may offer additional customization.
     variables:
@@ -56,7 +60,9 @@ Dungeons:
     # These are messages sent to players based on certain dungeon events
     messages:
       on-death:
-        sound: "entity.player.death" # Death sound is ommitted in mod
+        chat-message: null
+        action-bar: null
+        sound: "entity.player.death"
         title:
           title: "<red>You died!"
           fadeInTicks: 10

@@ -76,17 +76,17 @@ This mod adds a highly configurable experience that allows players to enter proc
 ## Configuration (config.yml)
 
 ### General Config Options (config.yml)
-| Key                                             | Default | Description                                                                               |
-|-------------------------------------------------|---------|-------------------------------------------------------------------------------------------|
-| `max-players-per-team`                          | 10      | The max team size permitted. Separate from dungeon team sizes.                            |
-| `spectator-mode.enabled`                        | True    | If enabled, players can spectate after death. If disabled, they are sent home.            |
-| `spectator-mode.only-on-team`                   | True    | If enabled, players cannot freecam while spectating.                                      |
-| `dungeon-commands`                              | -       | Control what commands survival players are permitted to use while inside a Dungeon world. |
-| `dungeon-commands.does-whitelist-have-priority` | True    | If true, then whitelisted commands are ALWAYS permitted even if blacklisted.              |
-| `dungeon-commands.whitelist.prefix`             | True    | Any command that starts with a phrase here will be whitelisted.                           |
-| `dungeon-commands.whitelist.regex`              | True    | Any command matches a regex here will be whitelisted.                                     |
-| `dungeon-commands.blacklist.prefix`             | True    | Any command that starts with a phrase here will be blacklisted.                           |
-| `dungeon-commands.blacklist.regex`              | True    | Any command matches a regex here will be blacklisted.                                     |
+| Key                                             | Default | Description                                                                                           |
+|-------------------------------------------------|---------|-------------------------------------------------------------------------------------------------------|
+| `max-players-per-team`                          | 10      | The max team size permitted. Separate from dungeon team sizes.                                        |
+| `spectator-mode.enabled`                        | True    | If enabled, players can spectate after death. If disabled, they are sent home.                        |
+| `global-dungeon-cooldown`                       | -       | The cooldown between any Dungeon being used. Dungeons can have their own cooldown separate from this. |
+| `dungeon-commands`                              | -       | Control what commands survival players are permitted to use while inside a Dungeon world.             |
+| `dungeon-commands.does-whitelist-have-priority` | True    | If true, then whitelisted commands are ALWAYS permitted even if blacklisted.                          |
+| `dungeon-commands.whitelist.prefix`             | True    | Any command that starts with a phrase here will be whitelisted.                                       |
+| `dungeon-commands.whitelist.regex`              | True    | Any command matches a regex here will be whitelisted.                                                 |
+| `dungeon-commands.blacklist.prefix`             | True    | Any command that starts with a phrase here will be blacklisted.                                       |
+| `dungeon-commands.blacklist.regex`              | True    | Any command matches a regex here will be blacklisted.                                                 |
 
 ### [Dungeon Types (dungeontypes.yml)](docs/dungeontypes.md)
 
