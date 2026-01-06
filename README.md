@@ -91,3 +91,7 @@ This mod adds a highly configurable experience that allows players to enter proc
 ### [Dungeon Types (dungeontypes.yml)](docs/dungeontypes.md)
 
 ### [Chest Loot Pools (loot.yml)](docs/loot.md)
+
+# Made With
+Made using API provided by RoguelikeDungeons-2.1.0 for 1.21.1-fabric. It is required to use Infinite Dungeons.
+https://modrinth.com/mod/roguelikedungeons/versions?g=1.21.1
