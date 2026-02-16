@@ -23,7 +23,9 @@ Roguelike-dungeons provides these by default:
 If you're feeling adventurous, you can create your own!
 
 ## Custom Themes
-An example custom theme is provided in `config/infinitedungeons/themes/custom_ice.json`. 
+An example custom theme is provided in `config/infinitedungeons/themes/custom_ice.json`.
+
+Put your own custom themes inside that same directory, and then you can use that theme's name to have it selected!
 
 There are two categories: `main` and `decorative`. 
 
