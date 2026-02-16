@@ -1,4 +1,14 @@
-~~# Dungeon Types (dungeontypes.yml)
+# Dungeon Types (dungeontypes.yml)
+
+# Themes
+Themes are the block palette selection used by a dungeontype. [More information can be found here.](themes.md)
+
+Example entry:
+```yaml
+themes:
+  - OAK
+  - SPRUCE
+```
 
 # Win Conditions
 Win conditions are ways to establish a win or loss for the dungeon.
@@ -8,7 +18,7 @@ Win conditions are ways to establish a win or loss for the dungeon.
 Each Dungeon will have a boss even if there is no `defeat_boss` win condition.
 
 Each `DungeonType` defines a group of possible bosses that can spawn in a dungeon. You can use static values or formulas
-to dynamically scale difficulty.~~
+to dynamically scale difficulty.
 
 | Key                    | Default | Description                                                                                                                   |
 |------------------------|---------|-------------------------------------------------------------------------------------------------------------------------------|
@@ -24,7 +34,6 @@ dynamically scale difficulty.
 |---------------------------------|---------|-------------------------------------------------------------------------------------------------------------------------------|
 | `random.base-properties`        | -       | Properties applied to **every entry** in this type. For example, `lvl=25` will apply to all spawned bosses unless overridden. |
 | `random.spawn-list`             | -       | A list of spawnable boss Pokemon with optional weights and additional spawn rules.                                            |
-| `preferred-rooms`               | list    | Optional list of dungeon rooms where this Pokemon will spawn. Unlike the boss, it will only spawn in a valid room.            |                                           |
 | `random.pokemon-per-room`       | -       | How many Pokemon to spawn per room. These Pokemon temporarily despawn after a Player leaves that room.                        |                                           |
 | `random.spawn-count-calculator` | -       | Determine how many Pokemon will be able to spawn per room.                                                                    |                           |
 
@@ -36,6 +45,8 @@ If you use `preferred-rooms: ["*"]`, then all rooms are possible - unless specif
 `["*", "!cistern"]`
 
 ## Spawn List Properties
+
+This is used when entering the spawn information for either random pokemon or a boss pokemon.
 
 | Property          | Type   | Description                                                                                                            |
 |-------------------|--------|------------------------------------------------------------------------------------------------------------------------|
@@ -87,77 +98,83 @@ Here are some common functions:
 ## Example: Dynamic Advanced Type
 
 ```yaml
-advanced_example:
-boss:
-  # This example showcases a level that raises by 5 for each avg_times_completed AND causes higher aggression based on the max_times_completed divided by 5. baseLevel is a variable provided by the parent Dungeon config located in /dungeons.yml
-  base-properties: lvl=${min(100, {baseLevel}+{avg_times_completed}*5)} fof-players-only aggression-bias=-${{max_times_completed}/5.0} aggression-rate=100.0 fof-damage=4.0
-  spawn-list:
-    # You can select certain rooms from RogueLike Dungeons that it will attempt to spawn in
-    - properties: mewtwo
-      weight: 99.9
-      preferred-rooms:
-        - ender
-    - properties: mewtwo shiny=true
-      weight: 0.1
-      preferred-rooms:
-        - ender
-random:
-  spawn-count-calculator:
-    type: formula
-    formula: '{room_area} / 9 + floor({team_size} / 2)'
-  base-properties: lvl=${randomInt(10, 20)} fof-players-only aggression-bias=-5 aggression-rate=100.0 fof-damage=4.0
-  spawn-list:
-    # You can select certain rooms from RogueLike Dungeons that it will attempt to spawn in
-    # You can select certain rooms from RogueLike Dungeons that it will attempt to spawn in
-    - properties: clefairy
-      weight: 99.9
-      preferred-rooms:
-        - cistern
-    - properties: clefairy shiny=true
-      weight: 0.1
-      preferred-rooms:
-        - cistern
-# Some generic config values
-options:
-  allow-spawner-mob-spawners: true
-  # Any and all gamerules should function here. The gamerules only apply to the dungeon level.
-  gamerules:
-    doMobSpawning: true
-    doMobLoot: false
-    mobGriefing: false
-    keepInventory: true
-# These are the loot pools that can generate in barrels and chests.
-# You can define a default loot pool, but the default will be overriden if you specify.
-loot:
-  default:
-    - pool: common
-      weight: 99
-    - pool: rare
-      weight: 1
-  kitchen:
-    - pool: rare
-      weight: 1
-# These are the win conditions for ending a dungeon.
-# Currently there are two types: `defeat_boss` and `defeat_n_pokemon`
-win-conditions:
-  - type: defeat_boss
-    weight: 50
-    max-seconds: 60
-    action-bar-text: <gray>[<dark_red>Defeat <yellow><b>{dungeon_boss_name}</b><gray>]
-    win-message:
-      chat-message: <green>You have defeated {dungeon_boss_name}! Prepare to exit the dungeon in 30 seconds!
-      action-bar: null
-      title:
-        subtitle: <gold>You defeated {dungeon_boss_name}!
-        fadeInTicks: 10
-        stayTicks: 20
-        fadeOutTicks: 10
-    timeout-message:
-      chat-message: <red>You ran out of time! Prepare to exit the dungeon in 30 seconds!
-      action-bar: null
-      title:
-        title: <red>You ran out of time!
-        fadeInTicks: 10
-        stayTicks: 20
-        fadeOutTicks: 10
+  advanced_example:
+    boss:
+      # This example showcases a level that raises by 5 for each avg_times_completed AND causes higher aggression based on the max_times_completed divided by 5. baseLevel is a variable provided by the parent Dungeon config located in /dungeons.yml
+      base-properties: lvl=${min(100, {baseLevel}+{avg_times_completed}*5)} fof-players-only aggression-bias=-${{max_times_completed}/5.0} aggression-rate=100.0 fof-damage=4.0
+      spawn-list:
+        # You can select certain rooms from RogueLike Dungeons that it will attempt to spawn in
+        - properties: mewtwo
+          weight: 99.9
+          preferred-rooms:
+            - ender
+        - properties: mewtwo shiny=true
+          weight: 0.1
+          preferred-rooms:
+            - ender
+    random:
+      spawn-count-calculator:
+        type: formula
+        formula: '{room_area} / 9 + floor({team_size} / 2)'
+      base-properties: lvl=${randomInt(10, 20)} fof-players-only aggression-bias=-5 aggression-rate=100.0 fof-damage=4.0
+      spawn-list:
+        # You can select certain rooms from RogueLike Dungeons that it will attempt to spawn in
+        # You can select certain rooms from RogueLike Dungeons that it will attempt to spawn in
+        - properties: clefairy
+          weight: 99.9
+          preferred-rooms:
+            - cistern
+        - properties: clefairy shiny=true
+          weight: 0.1
+          preferred-rooms:
+            - cistern
+    # Some generic config values
+    options:
+      allow-spawner-mob-spawners: true
+      # Any and all gamerules should function here. The gamerules only apply to the dungeon level.
+      gamerules:
+        doMobSpawning: true
+        doMobLoot: false
+        mobGriefing: false
+        keepInventory: true
+    # These are the loot pools that can generate in barrels and chests.
+    # You can define a default loot pool, but the default will be overriden if you specify.
+    loot:
+      default:
+        - pool: common
+          weight: 99
+        - pool: rare
+          weight: 1
+      kitchen:
+        - pool: rare
+          weight: 1
+    win-conditions:
+      - type: "defeat_boss"
+        weight: 50
+        max-seconds: 600
+        action-bar-text: "<gray>[<dark_red>Defeat <yellow><b>{dungeon_boss_name}</b><gray>]"
+        win-message:
+          chat-message: "<green>You have defeated {dungeon_boss_name}! Prepare to exit the dungeon in 30 seconds!"
+          action-bar: null
+          title:
+            subtitle: "<gold>You defeated {dungeon_boss_name}!"
+            fadeInTicks: 10
+            stayTicks: 20
+            fadeOutTicks: 10
+        timeout-message:
+          chat-message: "<red>You ran out of time! Prepare to exit the dungeon in 30 seconds!"
+          action-bar: null
+          title:
+            title: "<red>You ran out of time!"
+            fadeInTicks: 10
+            stayTicks: 20
+            fadeOutTicks: 10
+    # Themes that may appear. DEFAULT, TOWER, OAK, SPRUCE, DARKOAK, STONE, CRUMBLEDSTONE, MOSSY, CRUMBLEDMOSSY, SLATE, TILEDSLATE, NETHER, REDNETHER, WARPED, BLACK
+    themes:
+      - OAK
+      - SPRUCE
+      - DARKOAK
+      - STONE
+      - CRUMBLEDSTONE
+      - MOSSY
 ```

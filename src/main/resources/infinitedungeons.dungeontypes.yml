@@ -129,6 +129,14 @@ Types:
             fadeInTicks: 10
             stayTicks: 20
             fadeOutTicks: 10
+    # Themes that may appear. DEFAULT, TOWER, OAK, SPRUCE, DARKOAK, STONE, CRUMBLEDSTONE, MOSSY, CRUMBLEDMOSSY, SLATE, TILEDSLATE, NETHER, REDNETHER, WARPED, BLACK
+    themes:
+      - OAK
+      - SPRUCE
+      - DARKOAK
+      - STONE
+      - CRUMBLEDSTONE
+      - MOSSY
 
 
   # This example uses formulas to make it grow increasingly difficult
@@ -219,13 +227,22 @@ Types:
             fadeInTicks: 10
             stayTicks: 20
             fadeOutTicks: 10
+    # Themes that may appear. DEFAULT, TOWER, OAK, SPRUCE, DARKOAK, STONE, CRUMBLEDSTONE, MOSSY, CRUMBLEDMOSSY, SLATE, TILEDSLATE, NETHER, REDNETHER, WARPED, BLACK
+    themes:
+      - OAK
+      - SPRUCE
+      - DARKOAK
+      - STONE
+      - CRUMBLEDSTONE
+      - MOSSY
 
 
   # Functional examples
   # Cave is a functional example of a cave with different spawns in rooms, different bosses
+
   cave:
     boss:
-      base-properties: lvl=25 fof-players-only  aggression-bias=-5 aggression-rate=100.0 fof-damage=4.0 uncatchable
+      base-properties: lvl=25 fof-players-only  aggression-bias=-9999 aggression-rate=100.0 fof-damage=4.0
       spawn-list:
         - properties: clefable
           weight: 80.0
@@ -236,10 +253,10 @@ Types:
     random:
       spawn-count-calculator:
         type: area
-        max: 8
+        max: 2
         surface: true
-        blocks-per-pokemon: 40
-      base-properties: lvl=${randomInt(10, 20)} fof-players-only  aggression-bias=-5 aggression-rate=100.0 fof-damage=4.0
+        blocks-per-pokemon: 5
+      base-properties: lvl=${randomInt(10, 20)} fof-players-only  aggression-bias=-9999 aggression-rate=100.0 fof-damage=4.0
       spawn-list:
         - properties: zubat
           weight: 25.0
@@ -259,7 +276,6 @@ Types:
           preferred-rooms:
             - CRYPT
             - OSSUARY
-            - SCULK
             - ABYSS
         - properties: golbat
           weight: 10.0
@@ -303,7 +319,6 @@ Types:
         - properties: spiritomb
           weight: 1.0
           preferred-rooms:
-            - SCULK
             - OSSUARY
             - CRYPT
         - properties: clefable
@@ -329,70 +344,60 @@ Types:
         - pool: rare
           weight: 1
       kitchen:
-        - pool: rare
+        - pool: common
           weight: 1
     win-conditions:
-      - type: "defeat_boss"
+      - type: defeat_n_pokemon
         weight: 50
-        max-seconds: 600
-        action-bar-text: "<gray>[<dark_red>Defeat <yellow><b>{dungeon_boss_name}</b><gray>]"
+        max-seconds: 3600
+        amount: 60
+        action-bar-text: <gray>[<red>{amount}</red>/<gold>{max_amount}</gold> Pokemon Defeated]
         win-message:
-          chat-message: "<green>You have defeated {dungeon_boss_name}! Prepare to exit the dungeon in 30 seconds!"
+          chat-message: <green>You have defeated {max_amount}! Pokemon! Prepare to exit the dungeon in 30 seconds!
           action-bar: null
           title:
-            subtitle: "<gold>You defeated {dungeon_boss_name}!"
+            subtitle: <gold>You defeated 60 Pokemon! Leaving dungeon in 30 seconds !
             fadeInTicks: 10
             stayTicks: 20
             fadeOutTicks: 10
         timeout-message:
-          chat-message: "<red>You ran out of time! Prepare to exit the dungeon in 30 seconds!"
+          chat-message: <red>You ran out of time! Prepare to exit the dungeon in 30 seconds!
           action-bar: null
           title:
-            title: "<red>You ran out of time!"
+            title: <red>You ran out of time!
             fadeInTicks: 10
             stayTicks: 20
             fadeOutTicks: 10
-      - type: "defeat_n_pokemon"
-        weight: 50
-        max-seconds: 600
-        amount: 5
-        action-bar-text: "<gray>[<red>{amount}</red>/<gold>{max_amount}</gold> Pokemon Defeated]"
-        win-message:
-          chat-message: "<green>You have defeated {max_amount}! Pokemon! Prepare to exit the dungeon in 30 seconds!"
-          action-bar: null
-          title:
-            subtitle: "<gold>You defeated {dungeon_boss_name}!"
-            fadeInTicks: 10
-            stayTicks: 20
-            fadeOutTicks: 10
-        timeout-message:
-          chat-message: "<red>You ran out of time! Prepare to exit the dungeon in 30 seconds!"
-          action-bar: null
-          title:
-            title: "<red>You ran out of time!"
-            fadeInTicks: 10
-            stayTicks: 20
-            fadeOutTicks: 10
+    # Themes that may appear. DEFAULT, TOWER, OAK, SPRUCE, DARKOAK, STONE, CRUMBLEDSTONE, MOSSY, CRUMBLEDMOSSY, SLATE, TILEDSLATE, NETHER, REDNETHER, WARPED, BLACK
+    themes:
+      - STONE
+      - CRUMBLEDSTONE
+      - MOSSY
+      - CRUMBLEDMOSSY
 
   ruins:
     boss:
-      base-properties: lvl=30 aggression-bias=-5 aggression-rate=100.0 fof-damage=4.0
+      base-properties: lvl=100 aggression-bias=-9999 aggression-rate=100.0 fof-damage=4.0
       spawn-list:
         - properties: claydol
-          weight: 70.0
+          weight: 9999.0
+          preferred-rooms:
+            - SCULK
+            - CISTERN
+            - OSSUARY
         - properties: reuniclus
-          weight: 20.0
-        - properties: bronzong
-          weight: 9.5
-        - properties: claydol shiny=true
-          weight: 0.5
+          weight: 9999.0
+          preferred-rooms:
+            - SCULK
+            - CISTERN
+            - OSSUARY
     random:
       spawn-count-calculator:
         type: area
-        max: 8
+        max: 2
         surface: true
-        blocks-per-pokemon: 40
-      base-properties: lvl=${randomInt(15, 25)} fof-player-only aggression-bias=-5 aggression-rate=100.0 fof-damage=4.0
+        blocks-per-pokemon: 5
+      base-properties: lvl=${randomInt(15, 25)} fof-player-only aggression-bias=-9999 aggression-rate=100.0 fof-damage=4.0
       spawn-list:
         - properties: baltoy
           weight: 20.0
@@ -457,7 +462,6 @@ Types:
         - properties: spiritomb
           weight: 0.5
           preferred-rooms:
-            - SCULK
             - CRYPT
     # Some generic config values
     options:
@@ -476,153 +480,33 @@ Types:
           weight: 99
         - pool: rare
           weight: 1
-      kitchen:
-        - pool: rare
-          weight: 1
     win-conditions:
-      - type: "defeat_boss"
+      - type: defeat_boss
         weight: 50
-        max-seconds: 600
-        action-bar-text: "<gray>[<dark_red>Defeat <yellow><b>{dungeon_boss_name}</b><gray>]"
+        max-seconds: 3600
+        action-bar-text: <gray>[<dark_red>Defeat <yellow><b>{dungeon_boss_name}</b><gray>]
         win-message:
-          chat-message: "<green>You have defeated {dungeon_boss_name}! Prepare to exit the dungeon in 30 seconds!"
+          chat-message: <green>You have defeated {dungeon_boss_name}! Prepare to exit the dungeon in 30 seconds!
           action-bar: null
           title:
-            subtitle: "<gold>You defeated {dungeon_boss_name}!"
+            subtitle: <gold>You defeated {dungeon_boss_name}!
             fadeInTicks: 10
             stayTicks: 20
             fadeOutTicks: 10
         timeout-message:
-          chat-message: "<red>You ran out of time! Prepare to exit the dungeon in 30 seconds!"
+          chat-message: <red>You ran out of time! Prepare to exit the dungeon in 30 seconds!
           action-bar: null
           title:
-            title: "<red>You ran out of time!"
+            title: <red>You ran out of time!
             fadeInTicks: 10
             stayTicks: 20
             fadeOutTicks: 10
+    # Themes that may appear. DEFAULT, TOWER, OAK, SPRUCE, DARKOAK, STONE, CRUMBLEDSTONE, MOSSY, CRUMBLEDMOSSY, SLATE, TILEDSLATE, NETHER, REDNETHER, WARPED, BLACK
+    themes:
+      - OAK
+      - SPRUCE
+      - DARKOAK
+      - BLACK
+      - TILEDSLATE
+      - BLACK
 
-  lava_forge:
-    boss:
-      base-properties: lvl=35 aspect=forge-boss fof-player-only aggression-bias=-5 aggression-rate=100.0 fof-damage=4.0
-      spawn-list:
-        - properties: magmar
-          weight: 60.0
-        - properties: camerupt
-          weight: 30.0
-        - properties: heatmor
-          weight: 9.5
-        - properties: magmar shiny=true
-          weight: 0.5
-    random:
-      spawn-count-calculator:
-        type: area
-        max: 8
-        surface: true
-        blocks-per-pokemon: 40
-      base-properties: lvl=${randomInt(18, 28)} fof-player-only aggression-bias=-5 aggression-rate=100.0 fof-damage=4.0
-      spawn-list:
-        - properties: slugma
-          weight: 20.0
-          preferred-rooms:
-            - RESERVOIR
-            - CISTERN
-            - BREWING
-        - properties: numel
-          weight: 15.0
-          preferred-rooms:
-            - PIT
-            - SMITH
-            - CORRIDOR
-        - properties: koffing
-          weight: 12.0
-          preferred-rooms:
-            - KITCHEN
-            - BREWING
-            - BANQUET
-        - properties: houndour
-          weight: 10.0
-          preferred-rooms:
-            - STAIRWAY
-            - CROSS
-            - BALCONY
-        - properties: drilbur
-          weight: 8.0
-          preferred-rooms:
-            - CORRIDOR
-            - STAIRWAY
-            - SMITH
-        - properties: rolycoly
-          weight: 8.0
-          preferred-rooms:
-            - SMITH
-            - PIT
-            - BREWING
-        - properties: litwick
-          weight: 7.0
-          preferred-rooms:
-            - CRYPT
-            - OSSUARY
-            - LIBRARY
-        - properties: charcadet
-          weight: 6.0
-          preferred-rooms:
-            - IMPERIAL_STAIRWAY
-            - PANOPTICON
-        - properties: magcargo
-          weight: 5.0
-          preferred-rooms:
-            - RESERVOIR
-            - CISTERN
-            - ABYSS
-        - properties: durant
-          weight: 5.0
-          preferred-rooms:
-            - SMITH
-            - PANOPTICON
-            - BALCONY
-        - properties: turtonator
-          weight: 3.0
-          preferred-rooms:
-            - ABYSS
-            - IMPERIAL_STAIRWAY
-    # Some generic config values
-    options:
-      allow-spawner-mob-spawners: true
-      # Any and all gamerules should function here. The gamerules only apply to the dungeon level.
-      gamerules:
-        doMobSpawning: true
-        doMobLoot: false
-        mobGriefing: false
-        keepInventory: true
-    # These are the loot pools that can generate in barrels and chests.
-    # You can define a default loot pool, but the default will be overriden if you specify.
-    loot:
-      default:
-        - pool: common
-          weight: 99
-        - pool: rare
-          weight: 1
-      kitchen:
-        - pool: rare
-          weight: 1
-    win-conditions:
-      - type: "defeat_boss"
-        weight: 50
-        max-seconds: 600
-        action-bar-text: "<gray>[<dark_red>Defeat <yellow><b>{dungeon_boss_name}</b><gray>]"
-        win-message:
-          chat-message: "<green>You have defeated {dungeon_boss_name}! Prepare to exit the dungeon in 30 seconds!"
-          action-bar: null
-          title:
-            subtitle: "<gold>You defeated {dungeon_boss_name}!"
-            fadeInTicks: 10
-            stayTicks: 20
-            fadeOutTicks: 10
-        timeout-message:
-          chat-message: "<red>You ran out of time! Prepare to exit the dungeon in 30 seconds!"
-          action-bar: null
-          title:
-            title: "<red>You ran out of time!"
-            fadeInTicks: 10
-            stayTicks: 20
-            fadeOutTicks: 10

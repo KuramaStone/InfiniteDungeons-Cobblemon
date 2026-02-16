@@ -69,15 +69,22 @@ Dungeons:
           fadeOutTicks: 10
       on-respawn:
         sound: "minecraft:entity.player.teleport"
+    menu:
+      on-cooldown:
+        type: "minecraft:clock"
+        display-name: "<red><b>[{cooldown}]</b> {dungeon_name}"
+      available:
+        type: "minecraft:diamond"
+        display-name: "<red><b>[{cooldown}]</b> {dungeon_name}"
 
   # This is the id of this dungeon
   cave:
     # The display name for this dungeon config
-    display-name: "<#b78e5c>Caves</#b78e5c>"
+    display-name: <#b78e5c>Caves</#b78e5c>
     # duration before a player can play this again
-    cooldown: 10m
+    cooldown: 30m
     # should use adventure mode for players on entering
-    use-adventure-mode: true
+    use-adventure-mode: false
     # The number of lives given in this dungeon
     max-lives-per-player: 3
     # The max team size for the dungeon. If the user team is larger, they are asked to select which members to bring.
@@ -85,7 +92,7 @@ Dungeons:
 
     # These are the possible DungeonTypes that could be selected. Completing any of them still counts as a completion for this specific dungeon.
     type-list:
-      - type: "cave"
+      - type: cave
         weight: 1
     # Variables here will be used when calculating the formulas. They are optional but may offer additional customization.
     variables:
@@ -93,54 +100,54 @@ Dungeons:
     # The commands to run on startup. Commands containing a {player} will be run for every player.
     commands:
       on-start:
-        - "tellraw {player} {\"text\":\"Welcome to the Dungeon!\"}"
+        - tellraw {player} {"text":"Welcome to the Dungeon!"}
     # Optional section. These will be given when entering each room. Only enter rooms you'd like to have an intro. See the config.yml's "starting-room-priority" for a list of room names.
     introductions-per-room:
       kitchen:
-        title: ""
-        subtitle: "<gold>Hungry?"
+        title: ''
+        subtitle: <gold>3 Lives, 3 Chances- Loose all your lives and loose your items. Leave at anytime with /dungeon exit confirm .
         fadeInTicks: 10
-        stayTicks: 20
+        stayTicks: 30
         fadeOutTicks: 10
     # These are messages sent to players based on certain dungeon events
     messages:
       on-death:
-        sound: "entity.player.death" # Death sound is ommitted in mod
+        sound: entity.player.death # Death sound is ommitted in mod
         title:
-          title: "<red>You died!"
+          title: <red>You died!
           fadeInTicks: 10
           stayTicks: 20
           fadeOutTicks: 10
       leave-solo:
         title:
-          title: "<red>You have left the Dungeon"
+          title: <red>You have left the Dungeon
           fadeInTicks: 10
           stayTicks: 20
           fadeOutTicks: 10
       leave-team:
         title:
-          title: "<red>Your team has left the Dungeon"
+          title: <red>Your team has left the Dungeon
           fadeInTicks: 10
           stayTicks: 20
           fadeOutTicks: 10
       boss-defeated:
         title:
-          title: "<red>The boss has been defeated!"
-          subtitle: "<dark_red>The dungeon will kick you soon!"
+          title: <red>The boss has been defeated!
+          subtitle: <dark_red>The dungeon will kick you soon!
           fadeInTicks: 10
           stayTicks: 20
           fadeOutTicks: 10
       on-respawn:
-        sound: "minecraft:entity.player.teleport"
+        sound: minecraft:entity.player.teleport
 
   # This is the id of this dungeon
   ruins:
     # The display name for this dungeon config
-    display-name: "<#ea4200>Ruins</#ea4200>"
+    display-name: <#ea4200>Ruins</#ea4200>
     # duration before a player can play this again
-    cooldown: 10m
+    cooldown: 30m
     # should use adventure mode for players on entering
-    use-adventure-mode: true
+    use-adventure-mode: false
     # The number of lives given in this dungeon
     max-lives-per-player: 3
     # The max team size for the dungeon. If the user team is larger, they are asked to select which members to bring.
@@ -148,7 +155,7 @@ Dungeons:
 
     # These are the possible DungeonTypes that could be selected. Completing any of them still counts as a completion for this specific dungeon.
     type-list:
-      - type: "ruins"
+      - type: ruins
         weight: 1
     # Variables here will be used when calculating the formulas. They are optional but may offer additional customization.
     variables:
@@ -156,45 +163,45 @@ Dungeons:
     # The commands to run on startup. Commands containing a {player} will be run for every player.
     commands:
       on-start:
-        - "tellraw {player} {\"text\":\"Welcome to the Dungeon!\"}"
+        - tellraw {player} {"text":"Welcome to the Dungeon!"}
     # Optional section. These will be given when entering each room. Only enter rooms you'd like to have an intro. See the config.yml's "starting-room-priority" for a list of room names.
     introductions-per-room:
       kitchen:
-        title: ""
-        subtitle: "<gold>Hungry?"
+        title: ''
+        subtitle: <gold>3 Lives, 3 Chances- Loose all your lives and loose your items. Leave at anytime with /dungeon exit confirm .
         fadeInTicks: 10
-        stayTicks: 20
+        stayTicks: 30
         fadeOutTicks: 10
     # These are messages sent to players based on certain dungeon events
     messages:
       on-death:
-        sound: "entity.player.death" # Death sound is ommitted in mod
+        sound: entity.player.death # Death sound is ommitted in mod
         title:
-          title: "<red>You died!"
+          title: <red>You died!
           fadeInTicks: 10
           stayTicks: 20
           fadeOutTicks: 10
       leave-solo:
         title:
-          title: "<red>You have left the Dungeon"
+          title: <red>You have left the Dungeon
           fadeInTicks: 10
           stayTicks: 20
           fadeOutTicks: 10
       leave-team:
         title:
-          title: "<red>Your team has left the Dungeon"
+          title: <red>Your team has left the Dungeon
           fadeInTicks: 10
           stayTicks: 20
           fadeOutTicks: 10
       boss-defeated:
         title:
-          title: "<red>The boss has been defeated!"
-          subtitle: "<dark_red>The dungeon will kick you soon!"
+          title: <red>The boss has been defeated!
+          subtitle: <dark_red>The dungeon will kick you soon!
           fadeInTicks: 10
           stayTicks: 20
           fadeOutTicks: 10
       on-respawn:
-        sound: "minecraft:entity.player.teleport"
+        sound: minecraft:entity.player.teleport
 
   # This is the id of this dungeon
   advanced_example:
@@ -258,3 +265,10 @@ Dungeons:
           fadeOutTicks: 10
       on-respawn:
         sound: "minecraft:entity.player.teleport"
+    menu:
+      on-cooldown:
+        type: "minecraft:clock"
+        display-name: "<red><b>[{cooldown}]</b> {dungeon_name}"
+      available:
+        type: "minecraft:diamond"
+        display-name: "<red><b>[{cooldown}]</b> {dungeon_name}"

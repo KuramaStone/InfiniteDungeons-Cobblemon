@@ -21,6 +21,8 @@ These settings control boss spawns, difficulty, team requirements, and optional 
 | `introductions-per-room.<room>` | -       | Optionally set a title message introduction for each room type.                                                  |
 | `messages`                      | -       | Optionally add messages to certain game events with chat, action bar, sound, and/or title message.               |
 | `use-adventure-mode`            | true    | If true, the players will enter in adventure mode. They will return to Survival when leaving.                    |
+| `menu.available`                | -       | This is the item shown in menus when the Dungeon is available.                                                   |
+| `menu.on-cooldown`              | -       | This is the item shown in menus when the Dungeon is on cooldown.                                                 |
 
 ### Example
 
@@ -89,4 +91,11 @@ Dungeons:
           fadeOutTicks: 10
       on-respawn:
         sound: "minecraft:entity.player.teleport"
+    menu:
+      on-cooldown:
+        type: "minecraft:clock"
+        display-name: "<red><b>[{cooldown}]</b> {dungeon_name}"
+      available:
+        type: "minecraft:diamond"
+        display-name: "<red><b>[{cooldown}]</b> {dungeon_name}"
 ```
