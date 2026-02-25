@@ -271,4 +271,4 @@ Dungeons:
         display-name: "<red><b>[{cooldown}]</b> {dungeon_name}"
       available:
         type: "minecraft:diamond"
-        display-name: "<red><b>[{cooldown}]</b> {dungeon_name}"
+        display-name: "<green><b>[Ready]</b> {dungeon_name}"
